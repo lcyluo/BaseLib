@@ -1,0 +1,64 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="base_core_fab_margin">16dp</dimen>
+    <dimen name="base_core_toolbar_height">48dp</dimen>
+    <dimen name="base_core_loading_dialog_width">2dp</dimen>
+
+    <dimen name="base_core_tab_layout_height">42dp</dimen>
+    <dimen name="base_core_toolbar_text_size">16.5sp</dimen>
+
+    <dimen name="base_core_login_edit_height">44dp</dimen>
+    <dimen name="base_core_search_view_height">36dp</dimen>
+    <dimen name="base_core_common_btn_height">44dp</dimen>
+    <dimen name="base_core_login_edit_margin">30dp</dimen>
+    <dimen name="base_core_detail_image_item_size">84dp</dimen>
+    <dimen name="base_core_divider_height">1px</dimen>
+
+    <dimen name="base_core_sp_28">28sp</dimen>
+    <dimen name="base_core_sp_24">24sp</dimen>
+    <dimen name="base_core_sp_20">20sp</dimen>
+    <dimen name="base_core_sp_18">18sp</dimen>
+    <dimen name="base_core_sp_17">17sp</dimen>
+    <dimen name="base_core_sp_16">16sp</dimen>
+    <dimen name="base_core_sp_15">15sp</dimen>
+    <dimen name="base_core_sp_14">14sp</dimen>
+    <dimen name="base_core_sp_13">13sp</dimen>
+    <dimen name="base_core_sp_12">12sp</dimen>
+    <dimen name="base_core_sp_10">10sp</dimen>
+    <dimen name="base_core_sp_9">9sp</dimen>
+
+    <dimen name="base_core_dp_80">80dp</dimen>
+    <dimen name="base_core_dp_72">72dp</dimen>
+    <dimen name="base_core_dp_64">64dp</dimen>
+    <dimen name="base_core_dp_60">60dp</dimen>
+    <dimen name="base_core_dp_56">56dp</dimen>
+    <dimen name="base_core_dp_52">52dp</dimen>
+    <dimen name="base_core_dp_48">48dp</dimen>
+    <dimen name="base_core_dp_44">44dp</dimen>
+    <dimen name="base_core_dp_40">40dp</dimen>
+    <dimen name="base_core_dp_36">36dp</dimen>
+    <dimen name="base_core_dp_32">32dp</dimen>
+    <dimen name="base_core_dp_30">30dp</dimen>
+    <dimen name="base_core_dp_28">28dp</dimen>
+    <dimen name="base_core_dp_24">24dp</dimen>
+    <dimen name="base_core_dp_22">22dp</dimen>
+    <dimen name="base_core_dp_20">20dp</dimen>
+    <dimen name="base_core_dp_16">16dp</dimen>
+    <dimen name="base_core_dp_15">15dp</dimen>
+    <dimen name="base_core_dp_12">12dp</dimen>
+    <dimen name="base_core_dp_10">10dp</dimen>
+    <dimen name="base_core_dp_8">8dp</dimen>
+    <dimen name="base_core_dp_6">6dp</dimen>
+    <dimen name="base_core_dp_4">4dp</dimen>
+    <dimen name="base_core_dp_2">2dp</dimen>
+    <dimen name="base_core_dp_1">1dp</dimen>
+    <dimen name="base_core_dp_0">0dp</dimen>
+    <dimen name="base_core_poi_keyword_height">38dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="base_core_activity_horizontal_margin">16dp</dimen>
+    <dimen name="base_core_activity_vertical_margin">16dp</dimen>
+
+    <dimen name="base_core_status_bar_height">0dp</dimen>
+
+    <dimen name="grid_expected_size" tools:ignore="ResourceName">120dp</dimen>
+
+</resources>

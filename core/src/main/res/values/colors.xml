@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="base_core_color_primary">#1881F7</color>
+    <color name="base_core_color_primary_dark">#1881F7</color>
+    <color name="base_core_color_accent">#1881F7</color>
+    <color name="base_core_color_accent_red">#F16B54</color>
+    <color name="base_core_color_accent_dark">#1378e9</color>
+    <color name="base_core_color_accent_light">#4f85c2</color>
+    <color name="base_core_color_primary_white">@android:color/white</color>
+    <color name="base_core_color_primary_white_dark">@android:color/white</color>
+    <color name="base_core_color_title_white">@color/base_core_color_33</color>
+    <color name="base_core_window_background">#FFF8F8F8</color>
+    <color name="base_core_color_22">#222222</color>
+    <color name="base_core_color_23">#232323</color>
+    <color name="base_core_color_33">#333333</color>
+    <color name="base_core_color_44">#444444</color>
+    <color name="base_core_color_55">#555555</color>
+    <color name="base_core_color_66">#666666</color>
+    <color name="base_core_color_f2">#f2f2f2</color>
+    <color name="base_core_color_f6">#FFF6F6F6</color>
+    <color name="base_core_color_d8">#D8D8D8</color>
+    <color name="base_core_color_dd">#DDDDDD</color>
+    <color name="base_core_color_cc">#CCCCCC</color>
+    <color name="base_core_color_99">#999999</color>
+    <color name="base_core_color_f9">#F9F9F9</color>
+    <color name="base_core_color_e4">#E4E4E4</color>
+    <color name="base_core_color_b8">#B8B8B8</color>
+    <color name="base_core_color_e9">#E9E9E9</color>
+    <color name="base_core_color_aa">#AAAAAA</color>
+    <color name="base_core_color_red">#F15353</color>
+    <color name="base_core_color_green">#48BF27</color>
+    <color name="base_core_color_blue">#FF0D95FF</color>
+    <color name="base_core_color_86">#868686</color>
+    <color name="base_core_color_yellow">#FFFF511B</color>
+
+</resources>

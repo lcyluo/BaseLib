@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+    <declare-styleable name="CleanableEditText">
+        <attr name="mode" format="enum">
+            <enum name="clear" value="0"/>
+            <enum name="password" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
