@@ -2,9 +2,9 @@ package com.lcy.base.core.presenter
 
 import com.lcy.base.core.presenter.view.IBaseView
 
-interface IBasePresenter<T : IBaseView> {
+interface IBasePresenter<in V : IBaseView> {
 
-    fun attachView(view: T)
+    fun attachView(view: V)
 
     fun detachView()
 

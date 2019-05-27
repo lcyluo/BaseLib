@@ -9,8 +9,9 @@ import java.lang.ref.WeakReference
 open class RxPresenter<T : IBaseView> : IBasePresenter<T> {
 
     protected var mView: T? = null
+        private set
 
-    private var mCompositeDisposable: CompositeDisposable? = null
+    private val mCompositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
 
     override fun attachView(view: T) {
         mView = view
@@ -22,13 +23,10 @@ open class RxPresenter<T : IBaseView> : IBasePresenter<T> {
     }
 
     private fun unSubscribe() {
-        mCompositeDisposable?.dispose()
+        mCompositeDisposable.dispose()
     }
 
     protected fun addSubscribe(subscription: Disposable) {
-        if (mCompositeDisposable == null) {
-            mCompositeDisposable = CompositeDisposable()
-        }
-        mCompositeDisposable?.add(subscription)
+        mCompositeDisposable.add(subscription)
     }
 }

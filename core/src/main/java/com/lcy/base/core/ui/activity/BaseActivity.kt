@@ -18,14 +18,10 @@ abstract class BaseActivity<V : IBaseView, P : IBasePresenter<V>> : SimpleActivi
         mPresenter.attachView(this as V)
     }
 
-    override fun showError(code: Int, msg: String) {
-    }
+    override fun showError(code: Int, msg: String) {}
 
-    override fun showProgress() {
+    override fun showProgress() {}
 
-    }
+    override fun hideProgress() {}
 
-    override fun hideProgress() {
-
-    }
 }

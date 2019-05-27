@@ -403,7 +403,7 @@ abstract class BaseAppCompatActivity : AppCompatActivity(), ISupportActivity, Ac
      * @param intent 用于跳转的 Intent 对象
      * @return 检查通过返回true, 检查不通过返回false
      */
-    protected fun startActivitySelfCheck(intent: Intent): Boolean {
+    private fun startActivitySelfCheck(intent: Intent): Boolean {
         // 默认检查通过
         var result = true
         // 标记对象
