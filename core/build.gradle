@@ -27,6 +27,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
 }
 
 dependencies {
@@ -43,12 +48,18 @@ dependencies {
     api rootProject.ext.otherLibs
     //  multiDex
     api rootProject.ext.multidexLibs
+    //  弹框
+    api(rootProject.ext.excludeSupport["materialDialogs"]) {
+        exclude group: 'com.android.support'
+    }
     //  注解
     kapt rootProject.ext.annotationProcessorLibs
     // debug引入
     debugImplementation rootProject.ext.debugLibs
     // release引入
     releaseImplementation rootProject.ext.releaseLibs
+
+    implementation project(':image-loader')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

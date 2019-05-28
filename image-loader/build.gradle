@@ -24,7 +24,7 @@ dependencies {
 
     implementation rootProject.ext.supportDeps["appcompatv7"]
     implementation rootProject.ext.glideV4["glideOkhttp"]
-    implementation(rootProject.ext.glideV4["glide"]) {
+    api(rootProject.ext.glideV4["glide"]) {
         exclude group: 'com.android.support'
     }
     annotationProcessor rootProject.ext.glideV4["glideCompiler"]

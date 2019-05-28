@@ -10,6 +10,7 @@
     <color name="base_core_color_primary_white_dark">@android:color/white</color>
     <color name="base_core_color_title_white">@color/base_core_color_33</color>
     <color name="base_core_window_background">#FFF8F8F8</color>
+    <color name="base_core_color_place_holder">#FFE6E6E6</color>
     <color name="base_core_color_22">#222222</color>
     <color name="base_core_color_23">#232323</color>
     <color name="base_core_color_33">#333333</color>

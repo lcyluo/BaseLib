@@ -113,7 +113,7 @@ abstract class BaseAppCompatActivity : AppCompatActivity(), ISupportActivity, Ac
         return mDelegate.extraTransaction()
     }
 
-    protected fun reverseStatusColor() {
+    private fun reverseStatusColor() {
         if (showDarkStatus) {
             val mode = BarUtils.setStatusBarLightMode(this, true)
             if (mode == StatusBarMode.OTHERWISE) {
@@ -166,7 +166,7 @@ abstract class BaseAppCompatActivity : AppCompatActivity(), ISupportActivity, Ac
         mCompositeDisposable?.add(subscription)
     }
 
-    protected fun unSubscribe() {
+    private fun unSubscribe() {
         mCompositeDisposable?.dispose()
     }
 

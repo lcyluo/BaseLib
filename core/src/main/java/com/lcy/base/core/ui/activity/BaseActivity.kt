@@ -25,6 +25,7 @@ abstract class BaseActivity<V : IBaseView, P : IBasePresenter<V>> : SimpleActivi
         mPresenter.detachView()
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun initPresenter() {
         mPresenter.attachView(this as V)
     }
