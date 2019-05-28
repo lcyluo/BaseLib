@@ -31,8 +31,7 @@ abstract class BaseAppCompatActivity : AppCompatActivity(), ISupportActivity, Ac
 
     private val lifecycleSubject = BehaviorSubject.create<ActivityEvent>()
 
-    private val mDelegate: SupportActivityDelegate
-        get() = SupportActivityDelegate(this)
+    private val mDelegate: SupportActivityDelegate by lazy { SupportActivityDelegate(this) }
 
     protected lateinit var mContext: FragmentActivity
 

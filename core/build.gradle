@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
 
@@ -42,7 +44,7 @@ dependencies {
     //  multiDex
     api rootProject.ext.multidexLibs
     //  注解
-    annotationProcessor rootProject.ext.annotationProcessorLibs
+    kapt rootProject.ext.annotationProcessorLibs
     // debug引入
     debugImplementation rootProject.ext.debugLibs
     // release引入

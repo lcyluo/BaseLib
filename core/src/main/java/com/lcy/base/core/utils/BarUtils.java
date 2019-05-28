@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 
 import static android.Manifest.permission.EXPAND_STATUS_BAR;
 
+@SuppressWarnings("unchecked")
 public final class BarUtils {
 
     private static final int DEFAULT_ALPHA = 112;

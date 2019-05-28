@@ -1,8 +1,11 @@
 package com.lcy.base.ui.activity
 
+import android.widget.Toast
 import com.lcy.base.R
 import com.lcy.base.contract.MainContract
 import com.lcy.base.core.ui.activity.BaseActivity
+import com.lcy.base.data.protocol.AppVersionInfo
+import com.lcy.base.injection.helper.AppDiHelper
 import com.lcy.base.presenter.MainPresenter
 
 import kotlinx.android.synthetic.main.content_main.*
@@ -12,7 +15,7 @@ class MainActivity : BaseActivity<MainContract.View, MainPresenter>(), MainContr
     override fun getLayout(): Int = R.layout.activity_main
 
     override fun initInject() {
-
+        AppDiHelper.getActivityComponent(getAppComponent(), getActivityModule()).inject(this)
     }
 
     override fun initEventAndData() {
@@ -24,7 +27,11 @@ class MainActivity : BaseActivity<MainContract.View, MainPresenter>(), MainContr
 
     }
 
-    override fun setVersionInfo() {
+    override fun setVersionInfo(versionInfo: AppVersionInfo) {
 
+    }
+
+    override fun showError(code: Int, msg: String) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
     }
 }
