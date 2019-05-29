@@ -6,6 +6,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.*
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.wifi.WifiManager
@@ -13,6 +16,7 @@ import android.os.Build
 import android.support.annotation.RequiresPermission
 import android.telephony.TelephonyManager
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import com.lcy.base.core.common.BaseApplication
 
@@ -41,6 +45,50 @@ fun View.onClick(method: () -> Unit): View {
     setOnClickListener { method() }
     return this
 }
+
+
+fun View.view2Bitmap(): Bitmap {
+    val ret = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(ret)
+    val bgDrawable = this.background
+    bgDrawable?.draw(canvas) ?: canvas.drawColor(Color.WHITE)
+    this.draw(canvas)
+    return ret
+}
+
+var View.bottomMargin: Int
+    get():Int {
+        return (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+    }
+    set(value) {
+        (layoutParams as ViewGroup.MarginLayoutParams).bottomMargin = value
+    }
+
+
+var View.topMargin: Int
+    get():Int {
+        return (layoutParams as ViewGroup.MarginLayoutParams).topMargin
+    }
+    set(value) {
+        (layoutParams as ViewGroup.MarginLayoutParams).topMargin = value
+    }
+
+
+var View.rightMargin: Int
+    get():Int {
+        return (layoutParams as ViewGroup.MarginLayoutParams).rightMargin
+    }
+    set(value) {
+        (layoutParams as ViewGroup.MarginLayoutParams).rightMargin = value
+    }
+
+var View.leftMargin: Int
+    get():Int {
+        return (layoutParams as ViewGroup.MarginLayoutParams).leftMargin
+    }
+    set(value) {
+        (layoutParams as ViewGroup.MarginLayoutParams).leftMargin = value
+    }
 
 /**
  * 打开网络设置
@@ -123,10 +171,4 @@ private fun Context.getActiveNetworkInfo(): NetworkInfo? {
     return manager.activeNetworkInfo
 }
 
-/**
- * ImageView加载网络图片
- */
-fun ImageView.loadUrl(url: String) {
-
-}
 

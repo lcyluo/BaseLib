@@ -61,7 +61,7 @@ dependencies {
     // release引入
     releaseImplementation rootProject.ext.releaseLibs
 
-    implementation project(':image-loader')
+    api project(':image-loader')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

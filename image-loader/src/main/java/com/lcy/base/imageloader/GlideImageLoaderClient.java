@@ -160,11 +160,10 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
 
     /**
-     * @param blurRadius 模糊的程度 ，数字越大越模糊
-     * @param listener   接口回调需要拿到drawable
+     * @param listener 接口回调需要拿到drawable
      */
     @Override
-    public void displayBlurImage(Context context, String url, int blurRadius, final IGetDrawableListener listener) {
+    public void getDrawable(Context context, String url, final IGetDrawableListener listener) {
         GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {

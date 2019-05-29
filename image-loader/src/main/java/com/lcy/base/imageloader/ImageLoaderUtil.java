@@ -144,9 +144,9 @@ public class ImageLoaderUtil implements IImageLoaderClient {
     }
 
     @Override
-    public void displayBlurImage(Context context, String url, int blurRadius, final IGetDrawableListener listener) {
+    public void getDrawable(Context context, String url, final IGetDrawableListener listener) {
         if (client != null) {
-            client.displayBlurImage(context, url, blurRadius, listener);
+            client.getDrawable(context, url, listener);
         }
     }
 

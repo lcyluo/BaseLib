@@ -46,7 +46,7 @@ interface IImageLoaderClient {
     void displayImage(Fragment fragment, String url, ImageView imageView);
 
 
-    void displayBlurImage(Context context, String url, int blurRadius, IGetDrawableListener listener);
+    void getDrawable(Context context, String url, IGetDrawableListener listener);
 
     void displayBlurImage(Context context, String url, ImageView imageView, int blurRadius);
 
