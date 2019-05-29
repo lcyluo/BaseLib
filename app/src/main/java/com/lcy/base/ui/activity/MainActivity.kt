@@ -9,6 +9,7 @@ import com.lcy.base.injection.helper.AppDiHelper
 import com.lcy.base.presenter.MainPresenter
 
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity<MainContract.View, MainPresenter>(), MainContract.View {
 
@@ -32,6 +33,6 @@ class MainActivity : BaseActivity<MainContract.View, MainPresenter>(), MainContr
     }
 
     override fun showError(code: Int, msg: String) {
-        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show()
+        toast(msg)
     }
 }

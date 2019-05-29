@@ -28,6 +28,7 @@ ext {
             fragmentationVersion: "1.3.6",
             arouterApi          : "1.4.1",
             arouterCompiler     : "1.2.2",
+            anko_version        : "0.10.8",
     ]
 
     supportDeps = [
@@ -128,6 +129,11 @@ ext {
             glideCompiler: "com.github.bumptech.glide:compiler:$dependVersion.glideV4Version"
     ]
 
+    kotlin = [
+            ankoCommons : "org.jetbrains.anko:anko-commons:$dependVersion.anko_version",
+            kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+    ]
+
     supportLibs = supportDeps.values()
     networkLibs = network.values()
     rxJavaLibs = rxJava.values()
@@ -140,4 +146,5 @@ ext {
     annotationProcessorLibs = compilers.values()
     mapLibs = map.values()
     pinyinLibs = tinypinyin.values()
+    kotlinLibs = kotlin.values()
 }

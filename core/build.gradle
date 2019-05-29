@@ -48,6 +48,8 @@ dependencies {
     api rootProject.ext.otherLibs
     //  multiDex
     api rootProject.ext.multidexLibs
+    //  kotlin
+    api rootProject.ext.kotlinLibs
     //  弹框
     api(rootProject.ext.excludeSupport["materialDialogs"]) {
         exclude group: 'com.android.support'
@@ -60,8 +62,6 @@ dependencies {
     releaseImplementation rootProject.ext.releaseLibs
 
     implementation project(':image-loader')
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
