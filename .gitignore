@@ -15,6 +15,7 @@
 /build
 /captures
 .externalNativeBuild
+.DS_Store
 
 # custom define
 /*/src/androidTest
