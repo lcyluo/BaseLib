@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -8,6 +9,10 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        lintOptions {
+            abortOnError false
+        }
     }
 
     buildTypes {
@@ -28,4 +33,24 @@ dependencies {
         exclude group: 'com.android.support'
     }
     annotationProcessor rootProject.ext.glideV4["glideCompiler"]
+}
+
+publish {
+    userOrg = 'lcy'
+    groupId = 'com.lcy.base'
+    artifactId = 'image-loader'
+    publishVersion = '1.0.0'
+    desc = 'image loader'
+    website = ''
+}
+
+publish {
+    artifactId = 'image-loader'
+    uploadName = 'image-loader'
+    publishVersion = '1.0.0'
+    desc = 'image loader'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    website = rootProject.website
+    licences = rootProject.licences
 }

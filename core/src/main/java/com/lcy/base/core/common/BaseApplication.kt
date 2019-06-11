@@ -3,7 +3,9 @@ package com.lcy.base.core.common
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Build
+import android.support.multidex.MultiDex
 import com.lcy.base.core.BuildConfig
 import com.lcy.base.core.ext.dp2px
 import com.lcy.base.core.injection.component.AppComponent
@@ -204,6 +206,11 @@ class BaseApplication : Application() {
             e.printStackTrace()
         }
 
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
 }
