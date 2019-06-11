@@ -1,6 +1,5 @@
 package com.lcy.base.ui.activity
 
-import android.widget.Toast
 import com.lcy.base.R
 import com.lcy.base.contract.MainContract
 import com.lcy.base.core.ui.activity.BaseActivity

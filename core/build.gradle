@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.novoda.bintray-release'
+
 android {
     compileSdkVersion 28
 
@@ -61,9 +63,21 @@ dependencies {
     // release引入
     releaseImplementation rootProject.ext.releaseLibs
 
-    api project(':image-loader')
+    //  api project(':image-loader')
+    api 'com.lcy.base:image-loader:1.0.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+publish {
+    artifactId = 'core'
+    uploadName = 'core'
+    publishVersion = '1.0.0'
+    desc = 'core'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    website = rootProject.website
+    licences = rootProject.licences
 }
