@@ -7,12 +7,10 @@ import android.content.Context
 import android.os.Build
 import android.support.multidex.MultiDex
 import com.lcy.base.core.BuildConfig
-import com.lcy.base.core.ext.dp2px
 import com.lcy.base.core.injection.component.AppComponent
 import com.lcy.base.core.injection.component.DaggerAppComponent
 import com.lcy.base.core.injection.module.AppModule
 import com.lcy.base.core.injection.module.HttpModule
-import com.squareup.leakcanary.LeakCanary
 import me.yokeyword.fragmentation.Fragmentation
 import java.lang.ref.WeakReference
 import java.util.*
@@ -34,8 +32,6 @@ class BaseApplication : Application() {
         instance = this
 
         initAppInjection()
-        //  内存泄漏监测
-        initLeakCanary()
 
         initFragmentation()
 
@@ -67,13 +63,6 @@ class BaseApplication : Application() {
             .debug(BuildConfig.DEBUG)
             .handleException { e -> e.printStackTrace() }
             .install()
-    }
-
-    private fun initLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return
-        }
-        LeakCanary.install(this)
     }
 
     fun addActivity(act: Activity) {
