@@ -20,7 +20,7 @@ class MainPresenter @Inject constructor(private val mRetrofitHelper: AppRetrofit
                 .convertData()
                 .subscribeWith(object : CommonSubscriber<AppVersionInfo>(mView!!) {
                     override fun onNext(versionInfo: AppVersionInfo) {
-                        mView?.setVersionInfo(versionInfo)
+                        mView!!.setVersionInfo(versionInfo)
                     }
                 })
         )

@@ -19,6 +19,7 @@ ext {
             daggerVersion       : "2.20",
             rxJavaVersion       : "2.2.4",
             rxAndroidVersion    : "2.1.0",
+            rxKotlinVersion     : "2.2.0",
             rxBindingVersion    : "2.2.0",
             rxLifeCycleVersion  : "2.2.2",
             adapterHelperVersion: "2.9.44",
@@ -53,6 +54,7 @@ ext {
             //------ RxJava相关 ---------
             rxJava                   : "io.reactivex.rxjava2:rxjava:$dependVersion.rxJavaVersion",
             rxAndroid                : "io.reactivex.rxjava2:rxandroid:$dependVersion.rxAndroidVersion",
+            rxKotlin                 : "io.reactivex.rxjava2:rxkotlin:$dependVersion.rxKotlinVersion",
             rxBindingVersion         : "com.jakewharton.rxbinding2:rxbinding:$dependVersion.rxBindingVersion",
             rxBindingAppcompatVersion: "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$dependVersion.rxBindingVersion",
             rxLifecycleVersion       : "com.trello.rxlifecycle2:rxlifecycle:$dependVersion.rxLifeCycleVersion",
@@ -130,8 +132,9 @@ ext {
     ]
 
     kotlin = [
-            ankoCommons : "org.jetbrains.anko:anko-commons:$dependVersion.anko_version",
-            kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            ankoCommons  : "org.jetbrains.anko:anko-commons:$dependVersion.anko_version",
+            kotlinStdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
     ]
 
     supportLibs = supportDeps.values()

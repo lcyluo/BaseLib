@@ -1,11 +1,6 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-kapt'
-
 apply plugin: 'com.novoda.bintray-release'
 
 android {
@@ -21,7 +16,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -38,35 +33,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //  Support库
-    api rootProject.ext.supportLibs
-    //  网络请求库
-    api rootProject.ext.networkLibs
-    //  RxJava
-    api rootProject.ext.rxJavaLibs
-    //  依赖注入
-    api rootProject.ext.diLibs
-    //  其他
-    api rootProject.ext.otherLibs
-    //  multiDex
-    api rootProject.ext.multidexLibs
-    //  kotlin
-    api rootProject.ext.kotlinLibs
-    //  弹框
-    api(rootProject.ext.excludeSupport["materialDialogs"]) {
-        exclude group: 'com.android.support'
-    }
-    //  注解
-    kapt rootProject.ext.annotationProcessorLibs
-    //  图片加载
-    api 'com.lcy.base:image-loader:1.0.1'
+    compileOnly rootProject.ext.supportDeps["appcompatv7"]
+    compileOnly rootProject.ext.supportDeps["annotations"]
+
+    api rootProject.ext.rxJava["rxAndroid"]
+    api rootProject.ext.rxJava["rxKotlin"]
+    api rootProject.ext.kotlin["kotlinStdlib"]
+    implementation rootProject.ext.kotlin["kotlinReflect"]
 }
 
 publish {
-    artifactId = 'core'
-    uploadName = 'core'
-    publishVersion = '1.0.3'
-    desc = 'core'
+    artifactId = 'image-picker-core'
+    uploadName = 'image-picker-core'
+    publishVersion = '1.0.0'
+    desc = 'image picker core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
     website = rootProject.website
