@@ -54,7 +54,10 @@ open class BaseApplication : Application() {
      * 全局伴生对象
      */
     companion object {
-        lateinit var instance: BaseApplication
+
+        private lateinit var instance: BaseApplication
+
+        fun instance() = instance
     }
 
     private fun initFragmentation() {

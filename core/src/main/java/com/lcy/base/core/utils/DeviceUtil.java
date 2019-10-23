@@ -21,8 +21,8 @@ public class DeviceUtil {
     public static String getMetaApiHost() {
         String apiHost = "";
         try {
-            PackageManager packageManager = BaseApplication.instance.getPackageManager();
-            ApplicationInfo appInfo = packageManager.getApplicationInfo(BaseApplication.instance.getPackageName(), PackageManager.GET_META_DATA);
+            PackageManager packageManager = BaseApplication.Companion.instance().getPackageManager();
+            ApplicationInfo appInfo = packageManager.getApplicationInfo(BaseApplication.Companion.instance().getPackageName(), PackageManager.GET_META_DATA);
             apiHost = appInfo.metaData.getString("API_HOST");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -33,8 +33,8 @@ public class DeviceUtil {
     public static String getMetaApiFile() {
         String apiHost = "";
         try {
-            PackageManager packageManager = BaseApplication.instance.getPackageManager();
-            ApplicationInfo appInfo = packageManager.getApplicationInfo(BaseApplication.instance.getPackageName(), PackageManager.GET_META_DATA);
+            PackageManager packageManager = BaseApplication.Companion.instance().getPackageManager();
+            ApplicationInfo appInfo = packageManager.getApplicationInfo(BaseApplication.Companion.instance().getPackageName(), PackageManager.GET_META_DATA);
             apiHost = appInfo.metaData.getString("API_FILE");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -48,8 +48,8 @@ public class DeviceUtil {
     public static String getVersionName() {
         String versionName = "";
         try {
-            PackageManager packageManager = BaseApplication.instance.getPackageManager();
-            PackageInfo packInfo = packageManager.getPackageInfo(BaseApplication.instance.getPackageName(), 0);
+            PackageManager packageManager = BaseApplication.Companion.instance().getPackageManager();
+            PackageInfo packInfo = packageManager.getPackageInfo(BaseApplication.Companion.instance().getPackageName(), 0);
             versionName = packInfo.versionName;
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,8 +64,8 @@ public class DeviceUtil {
     public static String getVersionCode() {
         String versionCode = "";
         try {
-            PackageManager packageManager = BaseApplication.instance.getPackageManager();
-            PackageInfo packInfo = packageManager.getPackageInfo(BaseApplication.instance.getPackageName(), 0);
+            PackageManager packageManager = BaseApplication.Companion.instance().getPackageManager();
+            PackageInfo packInfo = packageManager.getPackageInfo(BaseApplication.Companion.instance().getPackageName(), 0);
             versionCode = String.valueOf(packInfo.versionCode);
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,8 +76,8 @@ public class DeviceUtil {
     public static int getVersionCodeInt() {
         int versionCode = -1;
         try {
-            PackageManager packageManager = BaseApplication.instance.getPackageManager();
-            PackageInfo packInfo = packageManager.getPackageInfo(BaseApplication.instance.getPackageName(), 0);
+            PackageManager packageManager = BaseApplication.Companion.instance().getPackageManager();
+            PackageInfo packInfo = packageManager.getPackageInfo(BaseApplication.Companion.instance().getPackageName(), 0);
             versionCode = packInfo.versionCode;
         } catch (Exception e) {
             e.printStackTrace();

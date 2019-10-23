@@ -49,7 +49,7 @@ abstract class BaseAppCompatActivity : AppCompatActivity(), ISupportActivity, Ac
         reverseStatusColor()
         setContentView(getLayout())
         mContext = this
-        BaseApplication.instance.addActivity(this)
+        BaseApplication.instance().addActivity(this)
 
         initToolbar(savedInstanceState)
         initInject()
@@ -155,7 +155,7 @@ abstract class BaseAppCompatActivity : AppCompatActivity(), ISupportActivity, Ac
         mDelegate.onDestroy()
         lifecycleSubject.onNext(ActivityEvent.DESTROY)
         unSubscribe()
-        BaseApplication.instance.finishActivity(this)
+        BaseApplication.instance().finishActivity(this)
         super.onDestroy()
     }
 

@@ -59,7 +59,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     }
 
     protected AppComponent getAppComponent() {
-        return BaseApplication.instance.getAppComponent();
+        return BaseApplication.Companion.instance().getAppComponent();
     }
 
     @Nullable

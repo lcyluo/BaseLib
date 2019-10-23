@@ -19,7 +19,7 @@ public class SpUtil {
     private final static String SP_NAME = "BASE_SP_CONFIG";
 
     private SpUtil() {
-        sp = BaseApplication.instance.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+        sp = BaseApplication.Companion.instance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 

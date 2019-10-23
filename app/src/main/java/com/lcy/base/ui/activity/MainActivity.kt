@@ -1,6 +1,7 @@
 package com.lcy.base.ui.activity
 
 import com.lcy.base.R
+import com.lcy.base.app.SimpleApplication
 import com.lcy.base.contract.MainContract
 import com.lcy.base.core.ext.onClick
 import com.lcy.base.core.ui.activity.BaseActivity

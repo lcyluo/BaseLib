@@ -13,7 +13,7 @@ abstract class BaseActivity<V : IBaseView, P : IBasePresenter<V>> : SimpleActivi
     protected lateinit var mPresenter: P
 
     protected fun getAppComponent(): AppComponent {
-        return BaseApplication.instance.appComponent;
+        return BaseApplication.instance().appComponent;
     }
 
     protected fun getActivityModule(): ActivityModule {
