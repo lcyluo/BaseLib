@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.lcy.base.picker.image.support.ui.widget.PreviewViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"/>
+
+    <FrameLayout
+            android:id="@+id/bottom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/preview_bottom_toolbar_bg"
+            android:elevation="4dp"
+            tools:targetApi="lollipop">
+
+        <TextView
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:foreground="?selectableItemBackground"
+                android:padding="16dp"
+                android:text="@string/button_back"
+                android:textColor="?attr/preview.bottomToolbar.back.textColor"
+                android:textSize="16sp"
+                tools:height="50dp"
+                tools:text="back"
+                tools:textColor="@android:color/white"
+                tools:visibility="visible"
+                tools:ignore="UnusedAttribute"/>
+
+        <TextView
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/preview_bottom_size"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+        <TextView
+                android:id="@+id/button_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:foreground="?selectableItemBackground"
+                android:padding="16dp"
+                android:textColor="?attr/preview.bottomToolbar.apply.textColor"
+                android:textSize="16sp"
+                tools:height="50dp"
+                tools:text="apply"
+                tools:textColor="@android:color/white"
+                tools:ignore="UnusedAttribute"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="8dp"
+            android:fitsSystemWindows="true">
+
+        <com.lcy.base.picker.image.support.ui.widget.CheckView
+                android:id="@+id/check_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"/>
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,9 +1,9 @@
 package com.lcy.base.picker.image.ui
 
 import android.content.Context
-import com.lcy.base.picker.image.entity.Result
-import com.lcy.base.picker.image.entity.sources.Camera
-import com.lcy.base.picker.image.entity.sources.Gallery
+import com.lcy.base.picker.image.support.entity.Result
+import com.lcy.base.picker.image.support.entity.sources.Camera
+import com.lcy.base.picker.image.support.entity.sources.Gallery
 import io.reactivex.Observable
 
 interface BasicImagePicker {

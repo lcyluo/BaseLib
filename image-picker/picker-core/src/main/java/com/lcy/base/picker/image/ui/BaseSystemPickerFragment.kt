@@ -11,7 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
-import com.lcy.base.picker.image.entity.Result
+import com.lcy.base.picker.image.support.entity.Result
 import com.lcy.base.picker.image.function.parseResultNoExtraData
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

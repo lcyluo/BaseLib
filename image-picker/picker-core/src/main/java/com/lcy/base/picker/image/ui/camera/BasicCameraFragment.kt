@@ -1,4 +1,4 @@
-package com.qingmei2.rximagepicker.ui.camera
+package com.lcy.base.picker.image.ui.camera
 
 import android.content.ContentValues
 import android.content.Intent
@@ -7,8 +7,7 @@ import android.provider.MediaStore
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import com.lcy.base.picker.image.entity.Result
-import com.lcy.base.picker.image.ui.camera.ICameraCustomPickerView
+import com.lcy.base.picker.image.support.entity.Result
 import com.lcy.base.picker.image.ui.BaseSystemPickerFragment
 import com.lcy.base.picker.image.ui.ICustomPickerConfiguration
 import io.reactivex.Observable

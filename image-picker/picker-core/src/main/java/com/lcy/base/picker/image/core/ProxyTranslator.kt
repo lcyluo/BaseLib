@@ -3,10 +3,10 @@ package com.lcy.base.picker.image.core
 import android.app.Activity
 import android.content.Context
 import android.support.v4.app.FragmentActivity
-import com.lcy.base.picker.image.entity.sources.Camera
-import com.lcy.base.picker.image.entity.sources.Gallery
-import com.lcy.base.picker.image.entity.sources.SourcesFrom
-import com.lcy.base.picker.image.entity.ConfigProvider
+import com.lcy.base.picker.image.support.entity.sources.Camera
+import com.lcy.base.picker.image.support.entity.sources.Gallery
+import com.lcy.base.picker.image.support.entity.sources.SourcesFrom
+import com.lcy.base.picker.image.support.entity.ConfigProvider
 import com.lcy.base.picker.image.ui.ActivityPickerViewController
 import com.lcy.base.picker.image.ui.ICustomPickerConfiguration
 import com.lcy.base.picker.image.ui.ICustomPickerView

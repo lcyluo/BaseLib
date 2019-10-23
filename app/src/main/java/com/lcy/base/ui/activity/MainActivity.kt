@@ -1,5 +1,6 @@
 package com.lcy.base.ui.activity
 
+import android.support.v7.widget.RecyclerView
 import com.lcy.base.R
 import com.lcy.base.contract.MainContract
 import com.lcy.base.core.ext.onClick

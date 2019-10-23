@@ -3,7 +3,7 @@ package com.lcy.base.picker.image.ui
 import android.support.annotation.IdRes
 import android.support.v4.app.FragmentActivity
 
-import com.lcy.base.picker.image.entity.Result
+import com.lcy.base.picker.image.support.entity.Result
 
 import io.reactivex.Observable
 

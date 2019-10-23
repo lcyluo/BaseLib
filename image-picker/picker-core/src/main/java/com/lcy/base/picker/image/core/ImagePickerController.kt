@@ -1,7 +1,7 @@
 package com.lcy.base.picker.image.core
 
 import android.app.Activity
-import com.lcy.base.picker.image.entity.ConfigProvider
+import com.lcy.base.picker.image.support.entity.ConfigProvider
 import com.lcy.base.picker.image.ui.ActivityPickerViewController
 import com.lcy.base.picker.image.ui.ICustomPickerConfiguration
 

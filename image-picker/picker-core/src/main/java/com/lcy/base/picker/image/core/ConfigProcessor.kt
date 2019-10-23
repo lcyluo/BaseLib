@@ -1,8 +1,8 @@
 package com.lcy.base.picker.image.core
 
-import com.lcy.base.picker.image.entity.ConfigProvider
+import com.lcy.base.picker.image.support.entity.ConfigProvider
 import com.lcy.base.picker.image.scheduler.IRxImagePickerSchedulers
-import com.lcy.base.picker.image.entity.sources.SourcesFrom
+import com.lcy.base.picker.image.support.entity.sources.SourcesFrom
 import com.lcy.base.picker.image.ui.ActivityPickerViewController
 import io.reactivex.Observable
 

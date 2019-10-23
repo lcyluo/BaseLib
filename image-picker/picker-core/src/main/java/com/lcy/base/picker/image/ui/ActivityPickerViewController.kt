@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.FragmentActivity
 
-import com.lcy.base.picker.image.entity.Result
+import com.lcy.base.picker.image.support.entity.Result
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
