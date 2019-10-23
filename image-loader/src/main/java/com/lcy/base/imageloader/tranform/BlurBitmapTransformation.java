@@ -50,19 +50,13 @@ public class BlurBitmapTransformation extends BitmapTransformation {
     }
 
     private Bitmap blur(Bitmap source, int radius, BitmapPool pool) {
-//        int w = source.getWidth();
-//        int h = source.getHeight();
-//        //由于有这个对象，可以这样的获取尺寸，方便对图片的操作，和对垃圾的回收
-//        Bitmap target = pool.get(w, h, Bitmap.Config.ARGB_8888);
-//        //copy
-//        Bitmap bitmap = target.copy(source.getConfig(), true);
         Bitmap bitmap = source.copy(source.getConfig(), true);
         int w = source.getWidth();
         int h = source.getHeight();
         int[] pix = new int[w * h];
 //        像素颜色写入位图
 //        要跳过的像素[ [] ]中的条目数
-//*行（必须是=位图的宽度）。
+//        *行（必须是=位图的宽度）。
 //        从每行读取的像素数
 //        要读取的行数。
         bitmap.getPixels(pix, 0, w, 0, 0, w, h);
@@ -72,15 +66,15 @@ public class BlurBitmapTransformation extends BitmapTransformation {
         int wh = w * h;
         int div = radius + radius + 1;
 
-        int r[] = new int[wh];
-        int g[] = new int[wh];
-        int b[] = new int[wh];
+        int[] r = new int[wh];
+        int[] g = new int[wh];
+        int[] b = new int[wh];
         int rsum, gsum, bsum, x, y, i, p, yp, yi, yw;
-        int vmin[] = new int[Math.max(w, h)];
+        int[] vmin = new int[Math.max(w, h)];
 
         int divsum = (div + 1) >> 1;
         divsum *= divsum;
-        int dv[] = new int[256 * divsum];
+        int[] dv = new int[256 * divsum];
         for (i = 0; i < 256 * divsum; i++) {
             dv[i] = (i / divsum);
         }

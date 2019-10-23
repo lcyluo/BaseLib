@@ -2,6 +2,7 @@ package com.lcy.base.core.utils;
 
 import android.content.Context;
 import android.support.v7.widget.*;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lcy.base.core.widgets.TopSmoothScroller;
 
@@ -129,6 +130,7 @@ public class RecyclerViewHelper {
     public static void moveToPosition(RecyclerView recyclerView, int position, boolean smooth) {
         //先从RecyclerView的LayoutManager中获取第一项和最后一项的Position
         LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        if (manager == null) return;
         int orientation = manager.getOrientation();
         int firstItem = manager.findFirstVisibleItemPosition();
         int lastItem = manager.findLastVisibleItemPosition();

@@ -1,10 +1,11 @@
 package com.lcy.base.imageloader;
 
+import android.net.Uri;
 import android.widget.ImageView;
 
 import com.lcy.base.imageloader.listener.ImageSize;
 
-
+@SuppressWarnings("all")
 public class ImageLoader {
 
     /**
@@ -17,6 +18,7 @@ public class ImageLoader {
     public static final int LOAD_STRATEGY_ONLY_WIFI = 1;
 
     private String url;         //  需要解析的url
+    private Uri uri;            //  需要解析的uri
     private int placeHolder;    //  当没有成功加载的时候显示的图片
     private int errorHolder;    //  当图片加载失败的时候显示的图片
     private ImageView imgView;  //  ImageView的实例
@@ -30,6 +32,7 @@ public class ImageLoader {
 
     private ImageLoader(Builder builder) {
         this.url = builder.url;
+        this.uri = builder.uri;
         this.placeHolder = builder.placeHolder;
         this.errorHolder = builder.errorHolder;
         this.imgView = builder.imgView;
@@ -44,6 +47,10 @@ public class ImageLoader {
 
     public String getUrl() {
         return url;
+    }
+
+    public Uri getUri() {
+        return uri;
     }
 
     public int getPlaceHolder() {
@@ -88,6 +95,7 @@ public class ImageLoader {
 
     public static class Builder {
         private String url;
+        private Uri uri;
         private int placeHolder;
         private int errorHolder;
         private ImageView imgView;
@@ -101,6 +109,7 @@ public class ImageLoader {
 
         public Builder() {
             this.url = "";
+            this.uri = null;
             this.placeHolder = R.drawable.image_loader_ic_def_place_holder;
             this.errorHolder = R.drawable.image_loader_ic_def_place_holder;
             this.imgView = null;
@@ -115,6 +124,11 @@ public class ImageLoader {
 
         public Builder url(String url) {
             this.url = url;
+            return this;
+        }
+
+        public Builder uri(Uri uri) {
+            this.uri = uri;
             return this;
         }
 

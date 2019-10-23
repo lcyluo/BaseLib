@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -43,13 +43,13 @@ dependencies {
 
 }
 
-publish {
-    artifactId = 'image-picker-support'
-    uploadName = 'image-picker-support'
-    publishVersion = '1.0.0'
-    desc = 'image picker support'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    website = rootProject.website
-    licences = rootProject.licences
-}
+//publish {
+//    artifactId = 'image-picker-support'
+//    uploadName = 'image-picker-support'
+//    publishVersion = '1.0.0'
+//    desc = 'image picker support'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}

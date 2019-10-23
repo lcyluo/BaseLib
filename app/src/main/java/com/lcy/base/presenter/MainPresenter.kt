@@ -15,14 +15,23 @@ class MainPresenter @Inject constructor(private val mRetrofitHelper: AppRetrofit
 
     override fun getVersionInfo() {
         addSubscribe(
-            mRetrofitHelper.getVersionInfo(ApiAppVersion("1.1.0"))
+            mRetrofitHelper.getVersionInfo2(ApiAppVersion("1.1.0"))
                 .rxSchedulerHelper(mView!!)
                 .convertData()
-                .subscribeWith(object : CommonSubscriber<AppVersionInfo>(mView!!) {
-                    override fun onNext(versionInfo: AppVersionInfo) {
-                        mView!!.setVersionInfo(versionInfo)
+                .subscribeWith(object : CommonSubscriber<AppVersionInfo>(view = mView!!) {
+                    override fun onNext(t: AppVersionInfo) {
+                        mView!!.setVersionInfo(t)
                     }
                 })
         )
+
+//        mRetrofitHelper.getVersionInfo(ApiAppVersion("1.1.0"))
+//            .rxSchedulerHelper(mView!!)
+//            .convertData()
+//            .subscribe(object : ErrorHandleSubscriber<AppVersionInfo>(view = mView!!) {
+//                override fun onNext(t: AppVersionInfo) {
+//                    mView!!.setVersionInfo(t)
+//                }
+//            })
     }
 }

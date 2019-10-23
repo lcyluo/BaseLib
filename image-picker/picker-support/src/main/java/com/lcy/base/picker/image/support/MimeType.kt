@@ -18,7 +18,6 @@ package com.qingmei2.rximagepicker_extension
 
 import android.content.ContentResolver
 import android.net.Uri
-import androidx.collection.ArraySet
 import android.text.TextUtils
 import android.webkit.MimeTypeMap
 

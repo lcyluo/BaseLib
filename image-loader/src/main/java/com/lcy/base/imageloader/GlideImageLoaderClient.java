@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.lcy.base.imageloader.tranform.BlurBitmapTransformation;
 
 import java.io.File;
 
+@SuppressWarnings("all")
 public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
@@ -86,17 +88,17 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
     public void displayImage(Context ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUrl()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(img.getUri() == null ? img.getUrl() : img.getUri()).apply(getOptions(img)).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Fragment ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUrl()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(img.getUri() == null ? img.getUrl() : img.getUri()).apply(getOptions(img)).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Activity ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUrl()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(img.getUri() == null ? img.getUrl() : img.getUri()).apply(getOptions(img)).into(img.getImgView());
     }
 
     private RequestOptions getOptions(ImageLoader imageLoader) {
@@ -135,28 +137,18 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * DiskCacheStrategy.AUTOMATIC 根据原始图片数据和资源编码策略来自动选择磁盘缓存策略。
      *
      * @param context   上下文
-     * @param resId     id
+     * @param uri       uri
      * @param imageView into
      */
     //DiskCacheStrategy.SOURCE：缓存原始数据 DiskCacheStrategy.DATA对应Glide 3中的DiskCacheStrategy.SOURCE
     @Override
-    public void displayImage(Context context, int resId, ImageView imageView) {
-        //设置缓存策略缓存原始数据  Saves just the original data to cache
-        GlideApp.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
+    public void displayImage(Context context, Uri uri, ImageView imageView) {
+        GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
     }
 
     @Override
     public void displayImage(Context context, String url, ImageView imageView) {
         GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
-    }
-
-
-    /**
-     * @param fragment 绑定生命周期
-     */
-    @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView) {
-        GlideApp.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
     }
 
     /**
@@ -165,6 +157,18 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     @Override
     public void getDrawable(Context context, String url, final IGetDrawableListener listener) {
         GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                if (listener != null) {
+                    listener.onDrawable(resource);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getDrawable(Context context, Uri uri, final IGetDrawableListener listener) {
+        GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                 if (listener != null) {
@@ -184,6 +188,11 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     @Override
     public void displayBlurImage(Context context, int resId, ImageView imageView, int blurRadius) {
         GlideApp.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).apply(blurRequestOptions(resId, blurRadius)).into(imageView);
+    }
+
+    @Override
+    public void displayBlurImage(Context context, Uri uri, ImageView imageView, int blurRadius) {
+        GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).apply(blurRequestOptions(R.drawable.image_loader_ic_def_place_holder, blurRadius)).into(imageView);
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.lcy.base.core.common.BaseApplication;
 import com.lcy.base.core.injection.component.AppComponent;
 import com.lcy.base.core.injection.module.FragmentModule;
@@ -21,6 +22,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
+
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -189,6 +191,9 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     @CallSuper
     public void onResume() {
         super.onResume();
+        if (!isInit && !this.isHidden()) {
+            setInit();
+        }
         lifecycleSubject.onNext(FragmentEvent.RESUME);
     }
 

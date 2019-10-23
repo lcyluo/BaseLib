@@ -1,8 +1,7 @@
+@file:Suppress("DEPRECATION")
+
 package com.lcy.base.core.ext
 
-import android.Manifest
-import android.Manifest.permission.ACCESS_WIFI_STATE
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.*
 import android.content.Intent
@@ -13,12 +12,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.wifi.WifiManager
 import android.os.Build
-import android.support.annotation.RequiresPermission
 import android.telephony.TelephonyManager
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.lcy.base.core.common.BaseApplication
 
 fun View.dip2px(dipValue: Float): Int {
     val scale = this.resources.displayMetrics.density

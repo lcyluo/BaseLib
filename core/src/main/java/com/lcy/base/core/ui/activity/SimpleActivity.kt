@@ -130,4 +130,8 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
             this.mActionBar?.setDisplayHomeAsUpEnabled(showHomeAsUp)
         }
     }
+
+    override fun initInject() {}
+
+    override fun initPresenter() {}
 }

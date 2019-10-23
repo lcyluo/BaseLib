@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.lcy.base.core.ext
 
 import android.widget.TextView

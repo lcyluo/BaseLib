@@ -20,10 +20,10 @@ import java.util.*
  *
  * @author lcy
  */
-class BaseApplication : Application() {
+open class BaseApplication : Application() {
 
     /** 存储Activity栈 **/
-    private val mActivityStack: Stack<WeakReference<Activity>>by lazy { Stack<WeakReference<Activity>>() }
+    private val mActivityStack: Stack<WeakReference<Activity>> by lazy { Stack<WeakReference<Activity>>() }
 
     lateinit var appComponent: AppComponent
 

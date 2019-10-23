@@ -37,19 +37,19 @@ fun ImageView.loadCircleImage(
 fun ImageView.loadRoundImage(
     context: Context,
     path: String,
-    radius: Int,
+    radius: Int = 0,
     placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
     errorHolder: Int = R.drawable.image_loader_ic_def_place_holder
 ) = ImageLoaderUtil.getInstance()
     .displayImage(context, createImageLoader(path, this, false, radius, placeHolder, errorHolder))
 
 /**
- * 加载圆角图片
+ * 加载本地图片
  */
 fun ImageView.loadResImage(
     context: Context,
     resId: Int
-) = ImageLoaderUtil.getInstance().displayImage(context, resId, this)
+) = ImageLoaderUtil.getInstance().displayImageInResource(context, resId, this)
 
 
 /**

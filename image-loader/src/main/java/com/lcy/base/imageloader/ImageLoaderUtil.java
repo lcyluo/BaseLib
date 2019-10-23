@@ -3,6 +3,7 @@ package com.lcy.base.imageloader;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
@@ -122,9 +123,9 @@ public class ImageLoaderUtil implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Context context, int resId, ImageView imageView) {
+    public void displayImage(Context context, Uri uri, ImageView imageView) {
         if (client != null) {
-            client.displayImage(context, resId, imageView);
+            client.displayImage(context, uri, imageView);
         }
     }
 
@@ -132,14 +133,6 @@ public class ImageLoaderUtil implements IImageLoaderClient {
     public void displayImage(Context context, String url, ImageView imageView) {
         if (client != null) {
             client.displayImage(context, url, imageView);
-        }
-    }
-
-
-    @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView) {
-        if (client != null) {
-            client.displayImage(fragment, url, imageView);
         }
     }
 
@@ -151,9 +144,23 @@ public class ImageLoaderUtil implements IImageLoaderClient {
     }
 
     @Override
+    public void getDrawable(Context context, Uri uri, IGetDrawableListener listener) {
+        if (client != null) {
+            client.getDrawable(context, uri, listener);
+        }
+    }
+
+    @Override
     public void displayBlurImage(Context context, int resId, ImageView imageView, int blurRadius) {
         if (client != null) {
             client.displayBlurImage(context, resId, imageView, blurRadius);
+        }
+    }
+
+    @Override
+    public void displayBlurImage(Context context, Uri uri, ImageView imageView, int blurRadius) {
+        if (client != null) {
+            client.displayBlurImage(context, uri, imageView, blurRadius);
         }
     }
 

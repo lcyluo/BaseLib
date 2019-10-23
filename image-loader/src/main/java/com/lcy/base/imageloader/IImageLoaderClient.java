@@ -3,6 +3,7 @@ package com.lcy.base.imageloader;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
@@ -39,19 +40,19 @@ interface IImageLoaderClient {
 
     void displayImage(Activity ctx, ImageLoader img);
 
-    void displayImage(Context context, int resId, ImageView imageView);
-
     void displayImage(Context context, String url, ImageView imageView);
 
-    void displayImage(Fragment fragment, String url, ImageView imageView);
-
+    void displayImage(Context context, Uri uri, ImageView imageView);
 
     void getDrawable(Context context, String url, IGetDrawableListener listener);
 
+    void getDrawable(Context context, Uri uri, IGetDrawableListener listener);
+
     void displayBlurImage(Context context, String url, ImageView imageView, int blurRadius);
 
-    void displayBlurImage(Context context, int resId, ImageView imageView, int blurRadius);
+    void displayBlurImage(Context context, Uri uri, ImageView imageView, int blurRadius);
 
+    void displayBlurImage(Context context, int resId, ImageView imageView, int blurRadius);
 
     void displayImageInResource(Activity activity, int resId, ImageView imageView);
 
@@ -61,20 +62,16 @@ interface IImageLoaderClient {
 
     /**
      * 停止图片的加载，对某一个的Activity
-     *
-     * @hide
      */
     void clear(Activity activity, ImageView imageView);
 
     /**
      * 停止图片的加载，context
-     * {@hide}
      */
     void clear(Context context, ImageView imageView);
 
     /**
      * 停止图片的加载，fragment
-     * {@hide}
      */
     void clear(Fragment fragment, ImageView imageView);
 

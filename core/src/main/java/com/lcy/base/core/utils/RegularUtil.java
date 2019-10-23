@@ -29,11 +29,9 @@ public class RegularUtil {
      * @param mobile 电话号码
      */
     public static boolean isMobileNO(String mobile) {
-
-        Pattern p = Pattern.compile("^((1[3,5,7,8][0-9])|(14[5,6,7,9])|(16[5,6])|(19[1,8,9]))\\d{8}$");
+        Pattern p = Pattern.compile("^(1[3-9])\\d{9}$");
         Matcher m = p.matcher(mobile);
         return m.matches();
-
     }
 
     /**
@@ -237,6 +235,7 @@ public class RegularUtil {
 
     /**
      * 获取坡度值
+     *
      * @param value 原字符串
      * @return 坡度值字符串
      */

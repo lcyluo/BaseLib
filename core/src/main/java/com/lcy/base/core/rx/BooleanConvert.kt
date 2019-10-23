@@ -4,6 +4,7 @@ import com.lcy.base.core.data.net.ApiConstant
 import com.lcy.base.core.data.net.ApiException
 import com.lcy.base.core.data.protocol.DataResponse
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.functions.Function
 
 /**
@@ -15,5 +16,14 @@ class BooleanConvert<T> : Function<DataResponse<T>, Flowable<Boolean>> {
             return Flowable.error(ApiException(t.code, t.msg))
         }
         return Flowable.just(true)
+    }
+}
+
+class BooleanConvertObservable<T> : Function<DataResponse<T>, Observable<Boolean>> {
+    override fun apply(t: DataResponse<T>): Observable<Boolean> {
+        if (t.code != ApiConstant.SUCCESS) {
+            return Observable.error(ApiException(t.code, t.msg))
+        }
+        return Observable.just(true)
     }
 }

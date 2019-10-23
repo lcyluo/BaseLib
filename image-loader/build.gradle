@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -35,13 +35,13 @@ dependencies {
     annotationProcessor rootProject.ext.glideV4["glideCompiler"]
 }
 
-publish {
-    artifactId = 'image-loader'
-    uploadName = 'image-loader'
-    publishVersion = '1.0.1'
-    desc = 'image loader'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    website = rootProject.website
-    licences = rootProject.licences
-}
+//publish {
+//    artifactId = 'image-loader'
+//    uploadName = 'image-loader'
+//    publishVersion = '1.0.2'
+//    desc = 'image loader'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}

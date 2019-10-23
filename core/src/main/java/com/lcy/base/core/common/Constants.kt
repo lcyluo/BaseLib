@@ -1,7 +1,15 @@
 package com.lcy.base.core.common
 
-object Constants {
+import com.lcy.base.core.utils.DeviceUtil
 
-    const val APP_API_HOST = "http://api-mobile-test.qingzhuyun.com/"
+object Constants {
+    /**
+     * 接口请求地址
+     */
+    val APP_API_HOST: String = DeviceUtil.getMetaApiHost()
+    /**
+     * 接口请求超时
+     */
     const val APP_API_TIMEOUT = 20L
+
 }

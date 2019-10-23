@@ -1,6 +1,5 @@
 package com.lcy.base.ui.activity
 
-import android.support.v7.widget.RecyclerView
 import com.lcy.base.R
 import com.lcy.base.contract.MainContract
 import com.lcy.base.core.ext.onClick
@@ -11,7 +10,6 @@ import com.lcy.base.picker.image.core.RxImagePicker
 import com.lcy.base.picker.image.custom.SystemImagePicker
 import com.lcy.base.picker.image.ui.gallery.DefaultSystemGalleryConfig
 import com.lcy.base.presenter.MainPresenter
-import com.lcy.base.utils.LogUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 import kotlinx.android.synthetic.main.content_main.*
@@ -41,7 +39,7 @@ class MainActivity : BaseActivity<MainContract.View, MainPresenter>(), MainContr
                     this
                 )
                 .subscribe { result ->
-                    LogUtil.d(result.uri.toString())
+                    //  LogUtil.d(result.uri.toString())
                 }
         }
 
@@ -52,7 +50,7 @@ class MainActivity : BaseActivity<MainContract.View, MainPresenter>(), MainContr
                     DefaultSystemGalleryConfig.defaultInstance()
                 )
                 .subscribe { result ->
-                    LogUtil.d(result.uri.toString())
+                    //  LogUtil.d(result.uri.toString())
                 }
         }
     }

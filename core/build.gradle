@@ -59,13 +59,13 @@ dependencies {
     //  注解
     kapt rootProject.ext.annotationProcessorLibs
     //  图片加载
-    api 'com.lcy.base:image-loader:1.0.1'
+    api 'com.lcy.base:image-loader:1.0.2'
 }
 
 publish {
     artifactId = 'core'
     uploadName = 'core'
-    publishVersion = '1.0.3'
+    publishVersion = '1.0.5'
     desc = 'core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
