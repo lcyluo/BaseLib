@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lcy.base.core.common.BaseApplication;
+import com.lcy.base.core.common.CoreApplication;
 import com.lcy.base.core.injection.component.AppComponent;
 import com.lcy.base.core.injection.module.FragmentModule;
 import com.lcy.base.core.presenter.IBasePresenter;
@@ -59,7 +59,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     }
 
     protected AppComponent getAppComponent() {
-        return BaseApplication.Companion.instance().getAppComponent();
+        return CoreApplication.Companion.instance().getAppComponent();
     }
 
     @Nullable

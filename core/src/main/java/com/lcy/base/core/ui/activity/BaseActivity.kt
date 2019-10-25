@@ -1,6 +1,6 @@
 package com.lcy.base.core.ui.activity
 
-import com.lcy.base.core.common.BaseApplication
+import com.lcy.base.core.common.CoreApplication
 import com.lcy.base.core.injection.component.AppComponent
 import com.lcy.base.core.injection.module.ActivityModule
 import com.lcy.base.core.presenter.IBasePresenter
@@ -13,7 +13,7 @@ abstract class BaseActivity<V : IBaseView, P : IBasePresenter<V>> : SimpleActivi
     protected lateinit var mPresenter: P
 
     protected fun getAppComponent(): AppComponent {
-        return BaseApplication.instance().appComponent;
+        return CoreApplication.instance().appComponent
     }
 
     protected fun getActivityModule(): ActivityModule {

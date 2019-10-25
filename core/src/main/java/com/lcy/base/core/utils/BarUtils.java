@@ -15,7 +15,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import com.lcy.base.core.common.BaseApplication;
+import com.lcy.base.core.common.CoreApplication;
 import com.lcy.base.core.common.StatusBarMode;
 
 import java.lang.reflect.Field;
@@ -41,7 +41,7 @@ public final class BarUtils {
      * @return the status bar's height
      */
     public static int getStatusBarHeight() {
-        Resources resources = BaseApplication.Companion.instance().getResources();
+        Resources resources = CoreApplication.Companion.instance().getResources();
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             return resources.getDimensionPixelSize(resourceId);
@@ -562,9 +562,9 @@ public final class BarUtils {
      */
     public static int getActionBarHeight() {
         TypedValue tv = new TypedValue();
-        if (BaseApplication.Companion.instance().getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        if (CoreApplication.Companion.instance().getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
             return TypedValue.complexToDimensionPixelSize(
-                    tv.data, BaseApplication.Companion.instance().getResources().getDisplayMetrics()
+                    tv.data, CoreApplication.Companion.instance().getResources().getDisplayMetrics()
             );
         }
         return 0;
@@ -595,7 +595,7 @@ public final class BarUtils {
     private static void invokePanels(final String methodName) {
         try {
             @SuppressLint("WrongConstant")
-            Object service = BaseApplication.Companion.instance().getSystemService("statusbar");
+            Object service = CoreApplication.Companion.instance().getSystemService("statusbar");
             @SuppressLint("PrivateApi")
             Class<?> statusBarManager = Class.forName("android.app.StatusBarManager");
             Method expand = statusBarManager.getMethod(methodName);
@@ -615,7 +615,7 @@ public final class BarUtils {
      * @return the navigation bar's height
      */
     public static int getNavBarHeight() {
-        Resources res = BaseApplication.Companion.instance().getResources();
+        Resources res = CoreApplication.Companion.instance().getResources();
         int resourceId = res.getIdentifier("navigation_bar_height", "dimen", "android");
         if (resourceId != 0) {
             return res.getDimensionPixelSize(resourceId);

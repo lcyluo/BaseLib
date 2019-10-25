@@ -1,7 +1,10 @@
 package com.lcy.base.core.injection.module
 
+import android.support.annotation.NonNull
+import android.util.Log
 import com.lcy.base.core.BuildConfig
 import com.lcy.base.core.common.Constants
+import com.lcy.base.core.common.HttpConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -14,7 +17,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class HttpModule {
+class HttpModule(@NonNull private val config: HttpConfig) {
 
     @Singleton
     @Provides
@@ -25,18 +28,22 @@ class HttpModule {
     @Singleton
     @Provides
     fun provideClient(builder: OkHttpClient.Builder): OkHttpClient {
-        if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor()
+        if (config.isShowLog) {
+            val loggingInterceptor = if (config.logger == null) {
+                HttpLoggingInterceptor()
+            } else {
+                HttpLoggingInterceptor(config.logger)
+            }
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(loggingInterceptor)
         }
         //  设置超时
-        builder.connectTimeout(Constants.APP_API_TIMEOUT, TimeUnit.SECONDS)
-        builder.readTimeout(Constants.APP_API_TIMEOUT, TimeUnit.SECONDS)
-        builder.writeTimeout(Constants.APP_API_TIMEOUT, TimeUnit.SECONDS)
+        builder.connectTimeout(config.connectTimeout, TimeUnit.SECONDS)
+        builder.readTimeout(config.readTimeout, TimeUnit.SECONDS)
+        builder.writeTimeout(config.writeTimeout, TimeUnit.SECONDS)
         //  错误重连
         builder.retryOnConnectionFailure(true)
-        if (!BuildConfig.DEBUG) {
+        if (!config.isCanProxy) {
             //  防止代理
             builder.proxy(Proxy.NO_PROXY)
         }
@@ -57,7 +64,7 @@ class HttpModule {
 
     private fun createRetrofit(builder: Retrofit.Builder, client: OkHttpClient): Retrofit {
         return builder
-            .baseUrl(Constants.APP_API_HOST)
+            .baseUrl(config.baseUrl)
             .client(client)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())

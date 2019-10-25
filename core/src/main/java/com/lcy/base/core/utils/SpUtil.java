@@ -4,7 +4,7 @@ package com.lcy.base.core.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.lcy.base.core.common.BaseApplication;
+import com.lcy.base.core.common.CoreApplication;
 
 /**
  * 配置文件工具类
@@ -19,7 +19,7 @@ public class SpUtil {
     private final static String SP_NAME = "BASE_SP_CONFIG";
 
     private SpUtil() {
-        sp = BaseApplication.Companion.instance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+        sp = CoreApplication.Companion.instance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 

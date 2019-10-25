@@ -14,7 +14,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.*;
-import com.lcy.base.core.common.BaseApplication;
+import com.lcy.base.core.common.CoreApplication;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -885,9 +885,9 @@ public final class SpanUtils {
             } else if (iconMarginDrawable != null) {
                 mBuilder.setSpan(new CustomIconMarginSpan(iconMarginDrawable, iconMarginGapWidth, alignIconMargin), start, end, flag);
             } else if (iconMarginUri != null) {
-                mBuilder.setSpan(new CustomIconMarginSpan(BaseApplication.Companion.instance(), iconMarginUri, iconMarginGapWidth, alignIconMargin), start, end, flag);
+                mBuilder.setSpan(new CustomIconMarginSpan(CoreApplication.Companion.instance(), iconMarginUri, iconMarginGapWidth, alignIconMargin), start, end, flag);
             } else if (iconMarginResourceId != -1) {
-                mBuilder.setSpan(new CustomIconMarginSpan(BaseApplication.Companion.instance(), iconMarginResourceId, iconMarginGapWidth, alignIconMargin), start, end, flag);
+                mBuilder.setSpan(new CustomIconMarginSpan(CoreApplication.Companion.instance(), iconMarginResourceId, iconMarginGapWidth, alignIconMargin), start, end, flag);
             }
         }
 
@@ -957,13 +957,13 @@ public final class SpanUtils {
         mBuilder.append("<img>");
         int end = start + 5;
         if (imageBitmap != null) {
-            mBuilder.setSpan(new CustomImageSpan(BaseApplication.Companion.instance(), imageBitmap, alignImage), start, end, flag);
+            mBuilder.setSpan(new CustomImageSpan(CoreApplication.Companion.instance(), imageBitmap, alignImage), start, end, flag);
         } else if (imageDrawable != null) {
             mBuilder.setSpan(new CustomImageSpan(imageDrawable, alignImage), start, end, flag);
         } else if (imageUri != null) {
-            mBuilder.setSpan(new CustomImageSpan(BaseApplication.Companion.instance(), imageUri, alignImage), start, end, flag);
+            mBuilder.setSpan(new CustomImageSpan(CoreApplication.Companion.instance(), imageUri, alignImage), start, end, flag);
         } else if (imageResourceId != -1) {
-            mBuilder.setSpan(new CustomImageSpan(BaseApplication.Companion.instance(), imageResourceId, alignImage), start, end, flag);
+            mBuilder.setSpan(new CustomImageSpan(CoreApplication.Companion.instance(), imageResourceId, alignImage), start, end, flag);
         }
     }
 

@@ -8,9 +8,6 @@ import android.os.Build
 import android.support.multidex.MultiDex
 import com.lcy.base.core.BuildConfig
 import com.lcy.base.core.injection.component.AppComponent
-import com.lcy.base.core.injection.component.DaggerAppComponent
-import com.lcy.base.core.injection.module.AppModule
-import com.lcy.base.core.injection.module.HttpModule
 import me.yokeyword.fragmentation.Fragmentation
 import java.lang.ref.WeakReference
 import java.util.*
@@ -20,7 +17,7 @@ import java.util.*
  *
  * @author lcy
  */
-open class BaseApplication : Application() {
+abstract class CoreApplication : Application() {
 
     /** 存储Activity栈 **/
     private val mActivityStack: Stack<WeakReference<Activity>> by lazy { Stack<WeakReference<Activity>>() }
@@ -31,8 +28,6 @@ open class BaseApplication : Application() {
         super.onCreate()
         instance = this
 
-        initAppInjection()
-
         initFragmentation()
 
         //  去掉Android P 私有API提示框
@@ -42,12 +37,10 @@ open class BaseApplication : Application() {
 
     }
 
-    private fun initAppInjection() {
-        appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(instance))
-            .httpModule(HttpModule())
-            .build()
-    }
+    /**
+     * 自定义模块信息
+     */
+    protected abstract fun initAppInjection()
 
 
     /**
@@ -55,7 +48,7 @@ open class BaseApplication : Application() {
      */
     companion object {
 
-        private lateinit var instance: BaseApplication
+        private lateinit var instance: CoreApplication
 
         fun instance() = instance
     }
@@ -176,16 +169,14 @@ open class BaseApplication : Application() {
         mActivityStack.clear()
     }
 
-    @SuppressLint("PrivateApi")
+    @SuppressLint("PrivateApi", "DiscouragedPrivateApi")
     private fun closeAndroidPDialog() {
         try {
             val aClass = Class.forName("android.content.pm.PackageParser\$Package")
             val declaredConstructor = aClass.getDeclaredConstructor(String::class.java)
             declaredConstructor.isAccessible = true
         } catch (e: Exception) {
-            e.printStackTrace()
         }
-
         try {
             val cls = Class.forName("android.app.ActivityThread")
             val declaredMethod = cls.getDeclaredMethod("currentActivityThread")
@@ -195,7 +186,6 @@ open class BaseApplication : Application() {
             mHiddenApiWarningShown.isAccessible = true
             mHiddenApiWarningShown.setBoolean(activityThread, true)
         } catch (e: Exception) {
-            e.printStackTrace()
         }
 
     }

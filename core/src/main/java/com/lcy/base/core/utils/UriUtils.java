@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
-import com.lcy.base.core.common.BaseApplication;
+import com.lcy.base.core.common.CoreApplication;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -42,8 +42,8 @@ public final class UriUtils {
      */
     public static Uri file2Uri(@NonNull final File file) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            String authority = BaseApplication.Companion.instance().getPackageName() + ".fileprovider";
-            return FileProvider.getUriForFile(BaseApplication.Companion.instance(), authority, file);
+            String authority = CoreApplication.Companion.instance().getPackageName() + ".fileprovider";
+            return FileProvider.getUriForFile(CoreApplication.Companion.instance(), authority, file);
         } else {
             return Uri.fromFile(file);
         }
