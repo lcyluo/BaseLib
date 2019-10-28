@@ -60,12 +60,14 @@ dependencies {
     kapt rootProject.ext.annotationProcessorLibs
     //  图片加载
     api 'com.lcy.base:image-loader:1.0.2'
+    //  配置retrofit动态url库
+    api 'me.jessyan:retrofit-url-manager:1.4.0'
 }
 
 publish {
     artifactId = 'core'
     uploadName = 'core'
-    publishVersion = '1.0.7'
+    publishVersion = '1.0.8'
     desc = 'core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId

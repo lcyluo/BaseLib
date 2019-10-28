@@ -2,6 +2,7 @@ package com.lcy.base.core.common;
 
 import android.support.annotation.NonNull;
 
+import com.lcy.base.core.data.cookie.CookieStore;
 import com.lcy.base.core.data.net.ApiConstant;
 
 import java.util.ArrayList;
@@ -49,6 +50,14 @@ public class HttpConfig {
      */
     @NonNull
     private final String baseUrl;
+    /**
+     * 是否需要cookie自动管理
+     */
+    private boolean cookieJar;
+    /**
+     * cookie 管理,对应内存Cookie和持久化Cookie
+     */
+    private CookieStore cookieStore;
 
     private HttpConfig(@NonNull Builder builder) {
         this.showLog = builder.showLog;
@@ -59,6 +68,8 @@ public class HttpConfig {
         this.writeTimeout = builder.writeTimeout;
         this.canProxy = builder.canProxy;
         this.baseUrl = builder.baseUrl;
+        this.cookieJar = builder.cookieJar;
+        this.cookieStore = builder.cookieStore;
     }
 
     public boolean isShowLog() {
@@ -94,6 +105,18 @@ public class HttpConfig {
         return baseUrl;
     }
 
+    public boolean isCookieJar() {
+        return cookieJar;
+    }
+
+    public CookieStore getCookieStore() {
+        return cookieStore;
+    }
+
+    public void setCookieStore(CookieStore cookieStore) {
+        this.cookieStore = cookieStore;
+    }
+
     public static class Builder {
         private boolean showLog;
         private HttpLoggingInterceptor.Logger logger;
@@ -103,6 +126,8 @@ public class HttpConfig {
         private long writeTimeout;
         private boolean canProxy;
         private String baseUrl;
+        private boolean cookieJar;
+        private CookieStore cookieStore;
 
         public Builder() {
             this.showLog = false;
@@ -113,6 +138,8 @@ public class HttpConfig {
             this.writeTimeout = Constants.APP_API_TIMEOUT;
             this.canProxy = true;
             this.baseUrl = null;
+            this.cookieJar = false;
+            this.cookieStore = null;
         }
 
         public Builder showLog(boolean showLog) {
@@ -162,6 +189,16 @@ public class HttpConfig {
         @NonNull
         public Builder baseUrl(@NonNull String baseUrl) {
             this.baseUrl = baseUrl;
+            return this;
+        }
+
+        public Builder cookieJar(boolean cookieJar) {
+            this.cookieJar = cookieJar;
+            return this;
+        }
+
+        public Builder cookieStore(CookieStore cookieStore) {
+            this.cookieStore = cookieStore;
             return this;
         }
 
