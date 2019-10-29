@@ -32,7 +32,7 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
     protected var mCompositeDisposable: CompositeDisposable? = null
 
     //  是否显示黑色状态栏
-    protected var showDarkStatus = true
+    open protected var showDarkStatus = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +63,7 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
 
     protected abstract fun initListeners()
 
-    protected fun initWindowFlags() {
+    open protected fun initWindowFlags() {
 
     }
 

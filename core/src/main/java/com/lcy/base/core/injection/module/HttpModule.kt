@@ -28,6 +28,10 @@ class HttpModule(@NonNull private val config: HttpConfig) {
     @Singleton
     @Provides
     fun provideClient(builder: OkHttpClient.Builder): OkHttpClient {
+        // 添加自定义拦截器
+        if (config.interceptors != null) {
+            config.interceptors.forEach { builder.addInterceptor(it) }
+        }
         if (config.isShowLog) {
             val loggingInterceptor = if (config.logger == null) {
                 HttpLoggingInterceptor()
@@ -37,21 +41,17 @@ class HttpModule(@NonNull private val config: HttpConfig) {
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(loggingInterceptor)
         }
-        //  添加自定义拦截器
-        if (config.interceptors != null) {
-            config.interceptors.forEach { builder.addInterceptor(it) }
-        }
-        //  设置超时
+        // 设置超时
         builder.connectTimeout(config.connectTimeout, TimeUnit.SECONDS)
         builder.readTimeout(config.readTimeout, TimeUnit.SECONDS)
         builder.writeTimeout(config.writeTimeout, TimeUnit.SECONDS)
-        //  错误重连
+        // 错误重连
         builder.retryOnConnectionFailure(true)
         if (!config.isCanProxy) {
             //  防止代理
             builder.proxy(Proxy.NO_PROXY)
         }
-        //  Cookie自动管理
+        // Cookie自动管理
         if (config.isCookieJar) {
             if (config.cookieStore == null) {
                 config.cookieStore = PersistentCookieStore()
