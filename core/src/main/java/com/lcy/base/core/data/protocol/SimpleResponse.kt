@@ -3,16 +3,12 @@ package com.lcy.base.core.data.protocol
 import com.google.gson.annotations.SerializedName
 import com.lcy.base.core.data.net.ApiConstant
 
-open class SimpleResponse {
-
-    /** 响应码 **/
-    val code: Int = 0
-
-    /** 消息内容 **/
+open class SimpleResponse(
+    val code: Int,
     @SerializedName("msg", alternate = ["message"])
-    val msg: String = ""
-
+    val msg: String
+) {
     /** 请求是否成功 **/
-    val success: Boolean
+    open val success: Boolean
         get() = code == ApiConstant.SUCCESS
 }
