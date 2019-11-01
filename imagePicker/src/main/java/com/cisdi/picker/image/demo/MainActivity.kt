@@ -13,12 +13,5 @@ class MainActivity : SimpleActivity() {
     override fun initListeners() {
 
     }
-
-    override fun initInject() {
-
-    }
-
-    override fun initPresenter() {
-
-    }
+    
 }

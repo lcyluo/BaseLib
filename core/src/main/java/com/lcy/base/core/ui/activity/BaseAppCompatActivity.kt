@@ -13,6 +13,7 @@ import com.lcy.base.core.common.CoreApplication
 import com.lcy.base.core.common.StatusBarMode
 import com.lcy.base.core.rx.lifecycle.ActivityLifecycleable
 import com.lcy.base.core.utils.BarUtils
+import com.lcy.base.core.widgets.LoadingDialog
 import com.trello.rxlifecycle2.LifecycleTransformer
 import com.trello.rxlifecycle2.RxLifecycle
 import com.trello.rxlifecycle2.android.ActivityEvent
@@ -33,6 +34,8 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
 
     //  是否显示黑色状态栏
     open protected var showDarkStatus = true
+
+    private var mLoadingDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,6 +133,7 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
     override fun onDestroy() {
         lifecycleSubject.onNext(ActivityEvent.DESTROY)
         unSubscribe()
+        dismissLoading()
         CoreApplication.instance().finishActivity(this)
         super.onDestroy()
     }
@@ -180,6 +184,24 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
         mActivityJumpTag = tag
         mActivityJumpTime = SystemClock.uptimeMillis()
         return result
+    }
+
+    fun showLoading() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = LoadingDialog(this)
+        }
+        if (!mLoadingDialog!!.isShowing) {
+            mLoadingDialog?.show()
+        }
+    }
+
+    fun dismissLoading() {
+        if (mLoadingDialog != null) {
+            if (mLoadingDialog!!.isShowing) {
+                mLoadingDialog!!.dismiss()
+            }
+            mLoadingDialog = null
+        }
     }
 
 }

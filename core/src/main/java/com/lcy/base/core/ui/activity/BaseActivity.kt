@@ -25,8 +25,11 @@ abstract class BaseActivity<V : IBaseView, P : IBasePresenter<V>> : SimpleActivi
         mPresenter.detachView()
     }
 
+    /**
+     * 采用final关键字,关闭了 override 的遗传性,子类无法再覆写
+     */
     @Suppress("UNCHECKED_CAST")
-    override fun initPresenter() {
+    final override fun initPresenter() {
         mPresenter.attachView(this as V)
     }
 
