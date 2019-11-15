@@ -32,7 +32,7 @@ interface IImageLoaderClient {
 
     Bitmap getBitmapFromCache(Context context, String url);
 
-    void getBitmapFromCache(Context context, String url, IGetBitmapListener listener);
+    void getBitmap(Context context, String url, IGetBitmapListener listener);
 
     void displayImage(Context ctx, ImageLoader img);
 

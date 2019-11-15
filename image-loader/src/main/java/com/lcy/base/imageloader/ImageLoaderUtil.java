@@ -95,9 +95,9 @@ public class ImageLoaderUtil implements IImageLoaderClient {
     }
 
     @Override
-    public void getBitmapFromCache(Context context, String url, IGetBitmapListener listener) {
+    public void getBitmap(Context context, String url, IGetBitmapListener listener) {
         if (client != null) {
-            client.getBitmapFromCache(context, url, listener);
+            client.getBitmap(context, url, listener);
         }
     }
 

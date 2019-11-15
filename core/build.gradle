@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.novoda.bintray-release'
+// apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -64,13 +64,13 @@ dependencies {
     api 'me.jessyan:retrofit-url-manager:1.4.0'
 }
 
-publish {
-    artifactId = 'core'
-    uploadName = 'core'
-    publishVersion = '1.1.5'
-    desc = 'core'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    website = rootProject.website
-    licences = rootProject.licences
-}
+//publish {
+//    artifactId = 'core'
+//    uploadName = 'core'
+//    publishVersion = '1.1.5'
+//    desc = 'core'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}

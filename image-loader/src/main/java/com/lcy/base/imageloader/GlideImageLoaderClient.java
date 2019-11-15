@@ -75,12 +75,19 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * 获取缓存中的图片
      */
     @Override
-    public void getBitmapFromCache(Context context, String url, final IGetBitmapListener listener) {
+    public void getBitmap(Context context, String url, final IGetBitmapListener listener) {
         GlideApp.with(context).asBitmap().load(url).into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
             @Override
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                 if (listener != null) {
                     listener.onBitmap(resource);
+                }
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                if (listener != null) {
+                    listener.onFailed(errorDrawable);
                 }
             }
         });
@@ -161,6 +168,13 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                 if (listener != null) {
                     listener.onDrawable(resource);
+                }
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                if (listener != null) {
+                    listener.onFailed(errorDrawable);
                 }
             }
         });
