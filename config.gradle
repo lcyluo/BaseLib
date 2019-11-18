@@ -133,7 +133,7 @@ ext {
 
     kotlin = [
             ankoCommons  : "org.jetbrains.anko:anko-commons:$dependVersion.anko_version",
-            kotlinStdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlinStdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
             kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
     ]
 

@@ -6,8 +6,10 @@ import android.support.design.widget.AppBarLayout
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import com.lcy.base.core.R
+import com.lcy.base.core.utils.BarUtils
 
 abstract class SimpleActivity : BaseAppCompatActivity() {
 
@@ -35,6 +37,20 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
         this.mActionBarHelper!!.init()
         if (Build.VERSION.SDK_INT >= 21) {
             this.mAppBarLayout!!.elevation = 4f
+        }
+        setStatusBarHeight()
+    }
+
+    private fun setStatusBarHeight() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return
+        }
+        val statusBar: View? = findViewById(R.id.view_status_bar)
+        if (statusBar != null && statusBar.visibility == View.VISIBLE) {
+            val layoutParams = statusBar.layoutParams
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+            layoutParams.height = BarUtils.getStatusBarHeight()
+            statusBar.layoutParams = layoutParams
         }
     }
 

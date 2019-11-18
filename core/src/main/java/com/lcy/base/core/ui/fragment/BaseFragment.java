@@ -2,6 +2,7 @@ package com.lcy.base.core.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lcy.base.core.R;
 import com.lcy.base.core.common.CoreApplication;
 import com.lcy.base.core.injection.component.AppComponent;
 import com.lcy.base.core.injection.module.FragmentModule;
@@ -18,6 +20,7 @@ import com.lcy.base.core.presenter.IBasePresenter;
 import com.lcy.base.core.presenter.view.IBaseView;
 import com.lcy.base.core.rx.lifecycle.FragmentLifecycleable;
 import com.lcy.base.core.ui.activity.BaseAppCompatActivity;
+import com.lcy.base.core.utils.BarUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -73,7 +76,24 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
         if (parent != null) {
             parent.removeView(mRootView);
         }
+        setStatusBarHeight();
         return mRootView;
+    }
+
+    /**
+     * 设置状态栏高度
+     */
+    private void setStatusBarHeight() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+        View statusBar = mRootView.findViewById(R.id.view_status_bar);
+        if (statusBar != null && statusBar.getVisibility() == View.VISIBLE) {
+            ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            layoutParams.height = BarUtils.getStatusBarHeight();
+            statusBar.setLayoutParams(layoutParams);
+        }
     }
 
     @Override

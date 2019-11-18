@@ -15,6 +15,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+
 import com.lcy.base.core.common.CoreApplication;
 import com.lcy.base.core.common.StatusBarMode;
 
@@ -46,7 +47,7 @@ public final class BarUtils {
         if (resourceId > 0) {
             return resources.getDimensionPixelSize(resourceId);
         }
-        return -1;
+        return CommonUtil.INSTANCE.dip2px(CoreApplication.Companion.instance(), 25);
     }
 
     /**

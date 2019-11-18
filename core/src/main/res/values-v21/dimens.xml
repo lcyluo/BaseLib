@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="base_core_status_bar_height">25dp</dimen>
+
+</resources>
