@@ -94,18 +94,56 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
 
     @Override
+    public void getBitmap(Context context, Uri uri, final IGetBitmapListener listener) {
+        GlideApp.with(context).asBitmap().load(uri).into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                if (listener != null) {
+                    listener.onBitmap(resource);
+                }
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                if (listener != null) {
+                    listener.onFailed(errorDrawable);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getBitmap(Context context, int resId, final IGetBitmapListener listener) {
+        GlideApp.with(context).asBitmap().load(resId).into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                if (listener != null) {
+                    listener.onBitmap(resource);
+                }
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                if (listener != null) {
+                    listener.onFailed(errorDrawable);
+                }
+            }
+        });
+    }
+
+    @Override
     public void displayImage(Context ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUri() == null ? img.getUrl() : img.getUri()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(img.getUri() == null ? (img.getUrl() == null ? img.getResId() : img.getUrl()) : img.getUri()).apply(getOptions(img)).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Fragment ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUri() == null ? img.getUrl() : img.getUri()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(img.getUri() == null ? (img.getUrl() == null ? img.getResId() : img.getUrl()) : img.getUri()).apply(getOptions(img)).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Activity ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUri() == null ? img.getUrl() : img.getUri()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(img.getUri() == null ? (img.getUrl() == null ? img.getResId() : img.getUrl()) : img.getUri()).apply(getOptions(img)).into(img.getImgView());
     }
 
     private RequestOptions getOptions(ImageLoader imageLoader) {

@@ -102,6 +102,20 @@ public class ImageLoaderUtil implements IImageLoaderClient {
     }
 
     @Override
+    public void getBitmap(Context context, Uri uri, IGetBitmapListener listener) {
+        if (client != null) {
+            client.getBitmap(context, uri, listener);
+        }
+    }
+
+    @Override
+    public void getBitmap(Context context, int resId, IGetBitmapListener listener) {
+        if (client != null) {
+            client.getBitmap(context, resId, listener);
+        }
+    }
+
+    @Override
     public void displayImage(Context ctx, ImageLoader img) {
         if (client != null) {
             client.displayImage(ctx, img);

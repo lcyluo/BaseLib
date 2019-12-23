@@ -121,7 +121,9 @@ abstract class CoreApplication : Application() {
                     it.remove()
                 }
             }
-            activity.finish()
+            if (!activity.isFinishing && !activity.isDestroyed) {
+                activity.finish()
+            }
         }
     }
 

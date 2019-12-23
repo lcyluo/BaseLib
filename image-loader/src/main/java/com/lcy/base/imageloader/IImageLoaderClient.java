@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
@@ -33,6 +34,10 @@ interface IImageLoaderClient {
     Bitmap getBitmapFromCache(Context context, String url);
 
     void getBitmap(Context context, String url, IGetBitmapListener listener);
+
+    void getBitmap(Context context, Uri uri, IGetBitmapListener listener);
+
+    void getBitmap(Context context, @IdRes int resId, IGetBitmapListener listener);
 
     void displayImage(Context ctx, ImageLoader img);
 

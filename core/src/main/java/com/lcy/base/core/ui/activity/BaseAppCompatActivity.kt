@@ -134,8 +134,8 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
         lifecycleSubject.onNext(ActivityEvent.DESTROY)
         unSubscribe()
         dismissLoading()
-        CoreApplication.instance().finishActivity(this)
         super.onDestroy()
+        CoreApplication.instance().finishActivity(this)
     }
 
     protected fun addSubscribe(subscription: Disposable) {

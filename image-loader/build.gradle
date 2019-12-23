@@ -38,7 +38,7 @@ dependencies {
 //publish {
 //    artifactId = 'image-loader'
 //    uploadName = 'image-loader'
-//    publishVersion = '1.0.3'
+//    publishVersion = '1.0.4'
 //    desc = 'image loader'
 //    userOrg = rootProject.userOrg
 //    groupId = rootProject.groupId
