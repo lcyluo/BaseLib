@@ -67,7 +67,7 @@ dependencies {
 publish {
     artifactId = 'core'
     uploadName = 'core'
-    publishVersion = '1.2.0'
+    publishVersion = '1.2.1'
     desc = 'core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId

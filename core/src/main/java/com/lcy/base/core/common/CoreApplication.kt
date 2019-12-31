@@ -49,7 +49,7 @@ abstract class CoreApplication : Application() {
     companion object {
 
         private lateinit var instance: CoreApplication
-
+        @JvmStatic
         fun instance() = instance
     }
 
