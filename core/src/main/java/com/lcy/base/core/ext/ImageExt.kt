@@ -15,18 +15,21 @@ import com.lcy.base.imageloader.R
  */
 fun ImageView.loadImage(
     context: Context,
-    path: String?
+    path: String? = null,
+    uri: Uri? = null,
+    resId: Int = -1,
+    placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
+    errorHolder: Int = R.drawable.image_loader_ic_def_place_holder
 ) = ImageLoaderUtil.getInstance().displayImage(
     context,
-    createImageLoader(path = path, imageView = this)
-)
-
-fun ImageView.loadImage(
-    context: Context,
-    uri: Uri?
-) = ImageLoaderUtil.getInstance().displayImage(
-    context,
-    createImageLoader(uri = uri, imageView = this)
+    createImageLoader(
+        path = path,
+        uri = uri,
+        resId = resId,
+        imageView = this,
+        placeHolder = placeHolder,
+        errorHolder = errorHolder
+    )
 )
 
 /**
@@ -34,27 +37,22 @@ fun ImageView.loadImage(
  */
 fun ImageView.loadCircleImage(
     context: Context,
-    path: String?
+    path: String? = null,
+    uri: Uri? = null,
+    resId: Int = -1,
+    placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
+    errorHolder: Int = R.drawable.image_loader_ic_def_place_holder
 ) = ImageLoaderUtil.getInstance().displayImage(
-    context, createImageLoader(path = path, imageView = this, circleCrop = true)
-)
-
-fun ImageView.loadCircleImage(
-    context: Context,
-    uri: Uri?
-) = ImageLoaderUtil.getInstance().displayImage(
-    context, createImageLoader(uri = uri, imageView = this, circleCrop = true)
-)
-
-/**
- * 加载圆角图片
- */
-fun ImageView.loadRoundImage(
-    context: Context,
-    path: String?,
-    radius: Int = 0
-) = ImageLoaderUtil.getInstance().displayImage(
-    context, createImageLoader(path = path, imageView = this, radius = radius)
+    context,
+    createImageLoader(
+        path = path,
+        uri = uri,
+        resId = resId,
+        imageView = this,
+        circleCrop = true,
+        placeHolder = placeHolder,
+        errorHolder = errorHolder
+    )
 )
 
 /**
@@ -62,10 +60,23 @@ fun ImageView.loadRoundImage(
  */
 fun ImageView.loadRoundImage(
     context: Context,
-    uri: Uri?,
-    radius: Int = 0
+    path: String? = null,
+    uri: Uri? = null,
+    resId: Int = -1,
+    radius: Int = 0,
+    placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
+    errorHolder: Int = R.drawable.image_loader_ic_def_place_holder
 ) = ImageLoaderUtil.getInstance().displayImage(
-    context, createImageLoader(uri = uri, imageView = this, radius = radius)
+    context,
+    createImageLoader(
+        path = path,
+        uri = uri,
+        resId = resId,
+        imageView = this,
+        radius = radius,
+        placeHolder = placeHolder,
+        errorHolder = errorHolder
+    )
 )
 
 /**
@@ -85,6 +96,7 @@ fun ImageView.loadClear(context: Context) = ImageLoaderUtil.getInstance().clear(
 fun createImageLoader(
     path: String? = null,
     uri: Uri? = null,
+    resId: Int = -1,
     imageView: ImageView,
     circleCrop: Boolean = false,
     radius: Int = 0,
@@ -102,6 +114,9 @@ fun createImageLoader(
     }
     if (uri != null) {
         builder.uri(uri)
+    }
+    if (resId > 0) {
+        builder.resId(resId)
     }
     return builder.build()
 }
