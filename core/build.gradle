@@ -65,31 +65,12 @@ dependencies {
     //  配置retrofit动态url库
     api 'me.jessyan:retrofit-url-manager:1.4.0'
 
-    compileOnly files('libs/framework_androidgo.jar')
-}
-
-// make SDK directory's android.jar set in libs behind
-preBuild {
-    doLast {
-        def imlFile = file(project.name + ".iml")
-        println 'Change ' + project.name + '.iml order'
-        try {
-            def parseXml = new XmlParser().parse(imlFile)
-            def jdkNode = parseXml.component[1].orderEntry.find { it.'@type' == 'jdk' }
-            parseXml.component[1].remove(jdkNode)
-            def sdkString = "Android API " + android.compileSdkVersion.substring("android-".length()) + " Platform"
-            new Node(parseXml.component[1], 'orderEntry', ['type': 'jdk', 'jdkName': sdkString, 'jdkType': 'Android SDK'])
-            XmlUtil.serialize(parseXml, new FileOutputStream(imlFile))
-        } catch (FileNotFoundException ignored) {
-            //nop, iml not found.
-        }
-    }
 }
 
 publish {
     artifactId = 'core'
     uploadName = 'core'
-    publishVersion = '1.2.2'
+    publishVersion = '1.2.1'
     desc = 'core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
