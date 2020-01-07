@@ -1,9 +1,11 @@
 
 package com.lcy.base.core.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+
 import com.lcy.base.core.common.CoreApplication;
 
 /**
@@ -18,6 +20,7 @@ public class SpUtil {
     private static Editor editor = null;
     private final static String SP_NAME = "BASE_SP_CONFIG";
 
+    @SuppressLint("CommitPrefEdits")
     private SpUtil() {
         sp = CoreApplication.Companion.instance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         editor = sp.edit();

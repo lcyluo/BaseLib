@@ -11,8 +11,7 @@ public class RecyclerViewHelper {
     private RecyclerViewHelper() {
         throw new RuntimeException("RecyclerViewHelper cannot be initialized!");
     }
-
-
+    
     /**
      * 配置垂直列表RecyclerView
      *

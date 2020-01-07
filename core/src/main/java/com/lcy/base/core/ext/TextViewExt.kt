@@ -1,7 +1,6 @@
-@file:Suppress("DEPRECATION")
-
 package com.lcy.base.core.ext
 
+import android.graphics.drawable.Drawable
 import android.widget.TextView
 
 /**
@@ -11,26 +10,32 @@ fun TextView.setColor(resId: Int) {
     this.setTextColor(resources.getColor(resId))
 }
 
-fun TextView.setDrawableLeft(resId: Int) {
-    val drawable = this.context.resources.getDrawable(resId)
-    drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-    this.setCompoundDrawables(drawable, null, null, null)
+/**
+ * 设置TextView图标
+ */
+fun TextView.setDrawable(
+    leftResId: Int = -1,
+    topResId: Int = -1,
+    rightResId: Int = -1,
+    bottomResId: Int = -1
+) {
+    val leftDrawable: Drawable? = leftResId.getDrawable(this.context)
+    val topDrawable: Drawable? = topResId.getDrawable(this.context)
+    val rightDrawable: Drawable? = rightResId.getDrawable(this.context)
+    val bottomDrawable: Drawable? = bottomResId.getDrawable(this.context)
+    this.setCompoundDrawables(leftDrawable, topDrawable, rightDrawable, bottomDrawable)
 }
 
-fun TextView.setDrawableRight(resId: Int) {
-    val drawable = this.context.resources.getDrawable(resId)
-    drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-    this.setCompoundDrawables(null, null, drawable, null)
+fun TextView.setDrawableRelative(
+    startResId: Int = -1,
+    topResId: Int = -1,
+    endResId: Int = -1,
+    bottomResId: Int = -1
+) {
+    val startDrawable: Drawable? = startResId.getDrawable(this.context)
+    val topDrawable: Drawable? = topResId.getDrawable(this.context)
+    val endDrawable: Drawable? = endResId.getDrawable(this.context)
+    val bottomDrawable: Drawable? = bottomResId.getDrawable(this.context)
+    this.setCompoundDrawablesRelative(startDrawable, topDrawable, endDrawable, bottomDrawable)
 }
 
-fun TextView.setDrawableTop(resId: Int) {
-    val drawable = this.context.resources.getDrawable(resId)
-    drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-    this.setCompoundDrawables(null, drawable, null, null)
-}
-
-fun TextView.setDrawableBottom(resId: Int) {
-    val drawable = this.context.resources.getDrawable(resId)
-    drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-    this.setCompoundDrawables(null, null, null, drawable)
-}

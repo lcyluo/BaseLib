@@ -43,31 +43,6 @@ import static android.content.Context.WIFI_SERVICE;
  */
 public class DeviceUtil {
 
-
-    public static String getMetaApiHost() {
-        String apiHost = "";
-        try {
-            PackageManager packageManager = CoreApplication.Companion.instance().getPackageManager();
-            ApplicationInfo appInfo = packageManager.getApplicationInfo(CoreApplication.Companion.instance().getPackageName(), PackageManager.GET_META_DATA);
-            apiHost = appInfo.metaData.getString("API_HOST");
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return apiHost;
-    }
-
-    public static String getMetaApiFile() {
-        String apiHost = "";
-        try {
-            PackageManager packageManager = CoreApplication.Companion.instance().getPackageManager();
-            ApplicationInfo appInfo = packageManager.getApplicationInfo(CoreApplication.Companion.instance().getPackageName(), PackageManager.GET_META_DATA);
-            apiHost = appInfo.metaData.getString("API_FILE");
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return apiHost;
-    }
-
     /**
      * 获取版本号
      */

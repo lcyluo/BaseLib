@@ -25,6 +25,7 @@ import java.lang.reflect.Method;
 import static android.Manifest.permission.EXPAND_STATUS_BAR;
 
 @SuppressWarnings("unchecked")
+@SuppressLint("PrivateApi")
 public final class BarUtils {
 
     private static final int DEFAULT_ALPHA = 112;
@@ -47,7 +48,7 @@ public final class BarUtils {
         if (resourceId > 0) {
             return resources.getDimensionPixelSize(resourceId);
         }
-        return CommonUtil.INSTANCE.dip2px(CoreApplication.Companion.instance(), 25);
+        return CommonUtil.dp2px(CoreApplication.instance(), 25);
     }
 
     /**
@@ -140,15 +141,14 @@ public final class BarUtils {
         if (window != null) {
             Class clazz = window.getClass();
             try {
-                int darkModeFlag = 0;
+                int darkModeFlag;
                 Class layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
                 Field field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
                 darkModeFlag = field.getInt(layoutParams);
                 Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
                 extraFlagField.invoke(window, dark ? darkModeFlag : 0, darkModeFlag);//状态栏透明且黑色字体
                 result = true;
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ignored) {
             }
         }
         return result;
@@ -183,8 +183,7 @@ public final class BarUtils {
                 meizuFlags.setInt(lp, value);
                 window.setAttributes(lp);
                 result = true;
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ignored) {
             }
         }
         return result;
