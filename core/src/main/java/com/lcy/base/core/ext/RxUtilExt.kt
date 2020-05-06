@@ -42,6 +42,6 @@ fun <T> Flowable<DataResponse<T>>.convertBoolean(): Flowable<Boolean> {
     return this.flatMap(BooleanConvert())
 }
 
-fun <T> Observable<DataResponse<T>>.convertBooleanObservable(): Observable<Boolean> {
+fun <T> Observable<DataResponse<T>>.convertBoolean(): Observable<Boolean> {
     return this.flatMap(BooleanConvertObservable())
 }

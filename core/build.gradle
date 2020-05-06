@@ -1,5 +1,3 @@
-import groovy.xml.XmlUtil
-
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
@@ -70,7 +68,7 @@ dependencies {
 publish {
     artifactId = 'core'
     uploadName = 'core'
-    publishVersion = '1.2.4'
+    publishVersion = '1.2.5'
     desc = 'core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
