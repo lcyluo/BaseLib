@@ -28,7 +28,7 @@ class SimpleApplication : CoreApplication() {
 
     override fun initAppInjection() {
         val httpConfig = HttpConfig.Builder()
-            .baseUrl(Constants.APP_API_HOST)
+            .baseUrl("")
             .showLog(BuildConfig.DEBUG)
             .logger { Log.e("QZ_BUILDING", it) }
             .canProxy(false)

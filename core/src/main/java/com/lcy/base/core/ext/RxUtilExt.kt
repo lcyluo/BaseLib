@@ -28,7 +28,7 @@ fun <T> Observable<T>.rxSchedulerHelper(mView: IBaseView): Observable<T> {
  * 扩展数据转换
  */
 fun <T> Flowable<DataResponse<T>>.convertData(): Flowable<T> {
-    return this.flatMap(DataConvert())
+    return this.flatMap<T>(DataConvert())
 }
 
 fun <T> Observable<DataResponse<T>>.convertData(): Observable<T> {
@@ -42,6 +42,6 @@ fun <T> Flowable<DataResponse<T>>.convertBoolean(): Flowable<Boolean> {
     return this.flatMap(BooleanConvert())
 }
 
-fun <T> Observable<DataResponse<T>>.convertBooleanObservable(): Observable<Boolean> {
+fun <T> Observable<DataResponse<T>>.convertBoolean(): Observable<Boolean> {
     return this.flatMap(BooleanConvertObservable())
 }

@@ -145,7 +145,9 @@ abstract class CoreApplication : Application() {
             }
             if (activity.javaClass == cls) {
                 it.remove()
-                activity.finish()
+                if (!activity.isFinishing && !activity.isDestroyed) {
+                    activity.finish()
+                }
             }
         }
     }
