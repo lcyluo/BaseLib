@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -65,13 +65,13 @@ dependencies {
 
 }
 
-publish {
-    artifactId = 'core'
-    uploadName = 'core'
-    publishVersion = '1.2.6'
-    desc = 'core'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    website = rootProject.website
-    licences = rootProject.licences
-}
+//publish {
+//    artifactId = 'core'
+//    uploadName = 'core'
+//    publishVersion = '1.2.6'
+//    desc = 'core'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}
