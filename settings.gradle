@@ -1,6 +1,4 @@
-include ':app', ':imagePicker',
-        ':core',
-        ':provider',
-        ':image-loader',
-        ':image-picker:picker-core',
-        ':image-picker:picker-support'
+include ':app'
+include ':core'
+include ':image-loader'
+include ':jsbridge'
