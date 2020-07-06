@@ -14,7 +14,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="BaseCoreTheme.NoActionBar.FitsSystemWindows"/>
+    <style name="BaseCoreTheme.NoActionBar.FitsSystemWindows" />
 
     <style name="BaseCoreTheme.NoActionBar.White">
         <item name="android:windowBackground">@android:color/white</item>
@@ -44,7 +44,7 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
-    <style name="BaseCoreTheme.NoActionBar.Main"/>
+    <style name="BaseCoreTheme.NoActionBar.Main" />
 
     <style name="BaseCoreTheme.NoActionBar.Main.White">
         <item name="android:windowBackground">@android:color/white</item>
@@ -60,13 +60,13 @@
         <item name="android:textColor">@color/base_core_color_title_white</item>
     </style>
 
-    <style name="BaseCoreTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="BaseCoreTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="BaseCoreTheme.AppBarOverlay.White" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/base_core_color_22</item>
     </style>
 
-    <style name="BaseCoreTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="BaseCoreTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="BaseCoreLoadingDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
