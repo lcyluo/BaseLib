@@ -6,7 +6,7 @@ buildscript {
 
         userOrg = 'lcy'
         repoName = "maven"
-        groupId = 'com.cisdi.qingzhu'
+        groupId = 'com.lcy.base'
         desc = 'cisdi qingzhu tools android'
         website = 'https://github.com/lcyluo/BaseLib'
         licences = ['Apache-2.0']

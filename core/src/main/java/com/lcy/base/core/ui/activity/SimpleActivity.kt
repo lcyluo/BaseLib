@@ -39,6 +39,7 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 21) {
             this.mAppBarLayout!!.elevation = 4f
         }
+        setNavigationIcon()
         setStatusBarHeight()
     }
 
