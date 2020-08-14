@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -38,7 +39,12 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 21) {
             this.mAppBarLayout!!.elevation = 4f
         }
+        setNavigationIcon()
         setStatusBarHeight()
+    }
+
+    private fun setNavigationIcon() {
+        mToolbar?.setNavigationIcon(getNavigationIcon())
     }
 
     private fun setStatusBarHeight() {
@@ -150,4 +156,8 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
     override fun initInject() {}
 
     override fun initPresenter() {}
+
+    open fun getNavigationIcon(): Int {
+        return R.drawable.base_core_ic_back
+    }
 }
