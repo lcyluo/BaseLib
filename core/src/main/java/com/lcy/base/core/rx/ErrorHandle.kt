@@ -20,6 +20,6 @@ fun errorHandle(t: Throwable, view: IBaseView, errorMsg: String = "未知错误"
     } else if (t is JsonParseException || t is JSONException || t is ParseException) {
         view.showError(ApiConstant.SERVER_ERROR, "数据解析异常")
     } else {
-        view.showError(ApiConstant.UNKNOWN_ERROR, errorMsg)
+        view.showError(ApiConstant.UNKNOWN_ERROR, t.message ?: errorMsg)
     }
 }
