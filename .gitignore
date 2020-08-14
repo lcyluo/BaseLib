@@ -2,16 +2,6 @@
 .gradle
 /local.properties
 /.idea
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/encodings.xml
-/.idea/gradle.xml
-/.idea/misc.xml
-/.idea/runConfigurations.xml
-/.idea/codeStyles/
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
 /build
 /captures
 .externalNativeBuild
