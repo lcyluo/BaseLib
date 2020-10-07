@@ -1,9 +1,11 @@
 package com.lcy.base.core.injection.module
 
 import android.support.annotation.NonNull
+import com.google.gson.Gson
 import com.lcy.base.core.common.HttpConfig
 import com.lcy.base.core.data.cookie.CookieJarImpl
 import com.lcy.base.core.data.cookie.PersistentCookieStore
+import com.lcy.base.core.utils.LenientGsonConverterFactory
 import dagger.Module
 import dagger.Provides
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -11,7 +13,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import java.net.Proxy
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -78,7 +79,7 @@ class HttpModule(@NonNull private val config: HttpConfig) {
             .baseUrl(config.baseUrl)
             .client(client)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(LenientGsonConverterFactory.create(Gson()))
             .build()
     }
 }
