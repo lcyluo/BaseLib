@@ -1,6 +1,7 @@
 package com.lcy.base.core.common;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.lcy.base.core.data.cookie.CookieStore;
 import com.lcy.base.core.data.net.ApiConstant;

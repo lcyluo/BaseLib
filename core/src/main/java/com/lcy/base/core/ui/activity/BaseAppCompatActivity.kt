@@ -4,11 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
-import android.support.annotation.CallSuper
-import android.support.annotation.CheckResult
-import android.support.annotation.NonNull
-import android.support.v4.app.FragmentActivity
 import android.view.MenuItem
+import androidx.annotation.CallSuper
+import androidx.annotation.CheckResult
+import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentActivity
 import com.lcy.base.core.common.CoreApplication
 import com.lcy.base.core.common.StatusBarMode
 import com.lcy.base.core.rx.lifecycle.ActivityLifecycleable
@@ -22,7 +22,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
-import me.yokeyword.fragmentation.*
+import me.yokeyword.fragmentation.SupportActivity
 
 abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable {
 

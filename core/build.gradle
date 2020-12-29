@@ -1,11 +1,7 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-
 apply plugin: 'com.novoda.bintray-release'
 
 android {
@@ -39,7 +35,9 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //  Support库
-    api rootProject.ext.supportLibs
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.google.android.material:material:1.2.1'
+    api 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     //  网络请求库
     api rootProject.ext.networkLibs
     //  RxJava
@@ -59,7 +57,7 @@ dependencies {
     //  注解
     kapt rootProject.ext.annotationProcessorLibs
     //  图片加载
-    api 'com.lcy.base:image-loader:1.0.4'
+    api 'com.lcy.base:image-loader:1.0.5'
     //  配置retrofit动态url库
     api 'me.jessyan:retrofit-url-manager:1.4.0'
 
@@ -68,7 +66,7 @@ dependencies {
 publish {
     artifactId = 'core'
     uploadName = 'core'
-    publishVersion = '1.2.6.4'
+    publishVersion = '1.2.7'
     desc = 'core'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId

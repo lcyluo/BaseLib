@@ -1,15 +1,17 @@
 package com.lcy.base.core.widgets.imagewatcher;
 
 import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+
 import com.lcy.base.core.R;
 
 import java.util.ArrayList;
@@ -209,10 +211,7 @@ public class ImageWatcherHelper {
     }
 
     private void addToBackStack(final FragmentActivity activity, final ImageWatcherHelper helper) {
-        activity.getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-            }
+        activity.getSupportFragmentManager().addOnBackStackChangedListener(() -> {
         });
 
         final BackPressedFragment backPressedFragment = new BackPressedFragment();

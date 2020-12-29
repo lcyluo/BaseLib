@@ -1,8 +1,9 @@
 package com.lcy.base.imageloader;
 
 import android.net.Uri;
-import android.support.annotation.IdRes;
 import android.widget.ImageView;
+
+import androidx.annotation.IdRes;
 
 import com.lcy.base.imageloader.listener.ImageSize;
 

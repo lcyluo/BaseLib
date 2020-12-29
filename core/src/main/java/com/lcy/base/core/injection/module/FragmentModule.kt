@@ -1,6 +1,6 @@
 package com.lcy.base.core.injection.module
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.lcy.base.core.injection.scope.FragmentScope
 import dagger.Module
 import dagger.Provides

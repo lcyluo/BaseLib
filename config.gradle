@@ -13,9 +13,9 @@ ext {
 
     dependVersion = [
             supportVersion      : "28.0.0",
-            retrofitVersion     : "2.5.0",
-            okhttpVersion       : "3.12.0",
-            glideV4Version      : "4.8.0",
+            retrofitVersion     : "2.9.0",
+            okhttpVersion       : "3.14.9",
+            glideVersion        : "4.11.0",
             daggerVersion       : "2.20",
             rxJavaVersion       : "2.2.4",
             rxAndroidVersion    : "2.1.0",
@@ -126,9 +126,9 @@ ext {
     ]
 
     glideV4 = [
-            glide        : "com.github.bumptech.glide:glide:$dependVersion.glideV4Version",
-            glideOkhttp  : "com.github.bumptech.glide:okhttp3-integration:$dependVersion.glideV4Version",
-            glideCompiler: "com.github.bumptech.glide:compiler:$dependVersion.glideV4Version"
+            glide        : "com.github.bumptech.glide:glide:$dependVersion.glideVersion",
+            glideOkhttp  : "com.github.bumptech.glide:okhttp3-integration:$dependVersion.glideVersion",
+            glideCompiler: "com.github.bumptech.glide:compiler:$dependVersion.glideVersion"
     ]
 
     kotlin = [

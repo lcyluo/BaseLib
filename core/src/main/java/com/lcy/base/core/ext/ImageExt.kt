@@ -1,9 +1,7 @@
 package com.lcy.base.core.ext
 
 import android.content.Context
-import android.database.DatabaseErrorHandler
 import android.net.Uri
-import android.support.constraint.Placeholder
 import android.widget.ImageView
 import com.lcy.base.imageloader.ImageLoader
 import com.lcy.base.imageloader.ImageLoaderUtil

@@ -13,8 +13,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation rootProject.ext.supportDeps["appcompatv7"]
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation rootProject.ext.glideV4["glideOkhttp"]
     api(rootProject.ext.glideV4["glide"]) {
         exclude group: 'com.android.support'
@@ -25,7 +24,7 @@ dependencies {
 //publish {
 //    artifactId = 'image-loader'
 //    uploadName = 'image-loader'
-//    publishVersion = '1.0.4'
+//    publishVersion = '1.0.5'
 //    desc = 'image loader'
 //    userOrg = rootProject.userOrg
 //    groupId = rootProject.groupId

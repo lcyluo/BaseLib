@@ -1,6 +1,6 @@
 package com.lcy.base.core.injection.module
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.lcy.base.core.injection.scope.ActivityScope
 import dagger.Module
 import dagger.Provides

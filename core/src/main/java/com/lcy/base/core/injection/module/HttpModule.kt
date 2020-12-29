@@ -1,6 +1,6 @@
 package com.lcy.base.core.injection.module
 
-import android.support.annotation.NonNull
+import androidx.annotation.NonNull
 import com.google.gson.Gson
 import com.lcy.base.core.common.HttpConfig
 import com.lcy.base.core.data.cookie.CookieJarImpl

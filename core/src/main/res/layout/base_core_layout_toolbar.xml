@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.AppBarLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/BaseCoreTheme.AppBarOverlay.White"
-        app:elevation="@dimen/base_core_dp_4">
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/BaseCoreTheme.AppBarOverlay.White"
+    app:elevation="@dimen/base_core_dp_4">
 
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_core_toolbar_height"
-            android:background="?attr/colorPrimary"
-            android:minHeight="@dimen/base_core_toolbar_height"
-            app:contentInsetEnd="@dimen/base_core_dp_0"
-            app:contentInsetLeft="@dimen/base_core_dp_0"
-            app:contentInsetRight="@dimen/base_core_dp_0"
-            app:contentInsetStart="@dimen/base_core_dp_0"
-            app:contentInsetStartWithNavigation="@dimen/base_core_dp_0"
-            app:popupTheme="@style/BaseCoreTheme.PopupOverlay"
-            app:theme="@style/BaseCoreTheme.AppBarOverlay.White"
-            app:titleTextAppearance="@style/BaseCoreToolbarTitleAppearance">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_core_toolbar_height"
+        android:background="?attr/colorPrimary"
+        android:minHeight="@dimen/base_core_toolbar_height"
+        app:contentInsetEnd="@dimen/base_core_dp_0"
+        app:contentInsetLeft="@dimen/base_core_dp_0"
+        app:contentInsetRight="@dimen/base_core_dp_0"
+        app:contentInsetStart="@dimen/base_core_dp_0"
+        app:contentInsetStartWithNavigation="@dimen/base_core_dp_0"
+        app:popupTheme="@style/BaseCoreTheme.PopupOverlay"
+        app:theme="@style/BaseCoreTheme.AppBarOverlay.White"
+        app:titleTextAppearance="@style/BaseCoreToolbarTitleAppearance">
 
         <TextView
-                android:id="@+id/toolbar_title"
-                style="@style/BaseCoreToolbarTitleAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:maxLines="1"/>
+            android:id="@+id/toolbar_title"
+            style="@style/BaseCoreToolbarTitleAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLines="1" />
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <View
-            android:id="@+id/app_bar_line"
-            style="@style/base_core_app_line"/>
+        android:id="@+id/app_bar_line"
+        style="@style/base_core_app_line" />
 
-</android.support.design.widget.AppBarLayout>
+</com.google.android.material.appbar.AppBarLayout>

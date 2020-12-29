@@ -1,7 +1,8 @@
 package com.lcy.base.core.widgets;
 
 import android.content.Context;
-import android.support.v7.widget.LinearSmoothScroller;
+
+import androidx.recyclerview.widget.LinearSmoothScroller;
 
 /**
  * Created by lcy on 2019/1/12.

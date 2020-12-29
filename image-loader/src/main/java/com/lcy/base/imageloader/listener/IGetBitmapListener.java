@@ -2,7 +2,8 @@ package com.lcy.base.imageloader.listener;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 /**
  * 获取Bitmap回调方法

@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.CheckResult;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.lcy.base.core.R;
 import com.lcy.base.core.common.CoreApplication;
@@ -26,13 +27,15 @@ import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation.SupportFragment;
-
-import javax.inject.Inject;
 
 
 public abstract class BaseFragment<P extends IBasePresenter> extends SupportFragment implements IBaseView, FragmentLifecycleable {
@@ -50,7 +53,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     protected CompositeDisposable mCompositeDisposable;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         mActivity = (BaseAppCompatActivity) context;
         mContext = context;
         lifecycleSubject.onNext(FragmentEvent.ATTACH);
@@ -150,7 +153,6 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     }
 
     protected void openActivity(Class<?> pClass, Bundle pBundle) {
-
         Intent intent = new Intent(getActivity(), pClass);
         if (pBundle != null) {
             intent.putExtras(pBundle);

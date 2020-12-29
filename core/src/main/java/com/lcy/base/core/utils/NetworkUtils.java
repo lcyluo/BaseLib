@@ -11,9 +11,10 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
+
+import androidx.annotation.RequiresPermission;
 
 import com.lcy.base.core.common.CoreApplication;
 

@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
-import com.bumptech.glide.load.engine.GlideException;
+import androidx.fragment.app.Fragment;
+
 import com.lcy.base.imageloader.listener.IGetBitmapListener;
 import com.lcy.base.imageloader.listener.IGetDrawableListener;
-import com.lcy.base.imageloader.okhttp.OnProgressListener;
-import com.lcy.base.imageloader.okhttp.ProgressManager;
 
 import java.io.File;
 

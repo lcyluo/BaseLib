@@ -5,7 +5,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Build
-import android.support.multidex.MultiDex
+import androidx.multidex.MultiDex
 import com.lcy.base.core.BuildConfig
 import com.lcy.base.core.injection.component.AppComponent
 import me.yokeyword.fragmentation.Fragmentation

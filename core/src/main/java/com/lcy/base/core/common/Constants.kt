@@ -6,4 +6,6 @@ object Constants {
      */
     const val APP_API_TIMEOUT = 20L
 
+    const val WINDOW_DURATION_SHORT = 500L
+
 }

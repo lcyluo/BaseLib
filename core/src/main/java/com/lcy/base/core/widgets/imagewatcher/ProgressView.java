@@ -5,12 +5,13 @@ import android.content.res.Resources;
 import android.graphics.*;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.*;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 

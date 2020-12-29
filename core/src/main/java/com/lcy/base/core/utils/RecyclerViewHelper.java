@@ -1,7 +1,12 @@
 package com.lcy.base.core.utils;
 
 import android.content.Context;
-import android.support.v7.widget.*;
+
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lcy.base.core.widgets.TopSmoothScroller;
@@ -11,25 +16,23 @@ public class RecyclerViewHelper {
     private RecyclerViewHelper() {
         throw new RuntimeException("RecyclerViewHelper cannot be initialized!");
     }
-    
+
     /**
      * 配置垂直列表RecyclerView
-     *
-     * @param view
      */
-    public static void initRecyclerViewV(Context context, RecyclerView view, RecyclerView.Adapter adapter) {
+    public static void initRecyclerViewV(Context context, RecyclerView view, RecyclerView.Adapter<?> adapter) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         initRecyclerView(layoutManager, view, adapter);
     }
 
-    public static void initRecyclerView(LinearLayoutManager manager, RecyclerView view, RecyclerView.Adapter adapter) {
+    public static void initRecyclerView(LinearLayoutManager manager, RecyclerView view, RecyclerView.Adapter<?> adapter) {
         view.setLayoutManager(manager);
         view.setItemAnimator(new DefaultItemAnimator());
         view.setAdapter(adapter);
     }
 
-    public static void initRecyclerViewV(Context context, RecyclerView view, BaseQuickAdapter adapter, BaseQuickAdapter.RequestLoadMoreListener listener) {
+    public static void initRecyclerViewV(Context context, RecyclerView view, BaseQuickAdapter<?, ?> adapter, BaseQuickAdapter.RequestLoadMoreListener listener) {
         initRecyclerViewV(context, view, adapter);
         adapter.setOnLoadMoreListener(listener, view);
     }
@@ -40,7 +43,7 @@ public class RecyclerViewHelper {
      *
      * @param view
      */
-    public static void initRecyclerViewH(Context context, RecyclerView view, RecyclerView.Adapter adapter) {
+    public static void initRecyclerViewH(Context context, RecyclerView view, RecyclerView.Adapter<?> adapter) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         view.setLayoutManager(layoutManager);
@@ -53,27 +56,33 @@ public class RecyclerViewHelper {
      *
      * @param view
      */
-    public static void initRecyclerViewG(Context context, RecyclerView view, RecyclerView.Adapter adapter, int column) {
+    public static void initRecyclerViewG(Context context, RecyclerView view, RecyclerView.Adapter<?> adapter, int column) {
         GridLayoutManager layoutManager = new GridLayoutManager(context, column, LinearLayoutManager.VERTICAL, false);
         view.setLayoutManager(layoutManager);
         view.setItemAnimator(new DefaultItemAnimator());
         view.setAdapter(adapter);
     }
 
+    public static void initRecyclerViewG(Context context, RecyclerView view, RecyclerView.Adapter<?> adapter, @RecyclerView.Orientation int orientation, int column) {
+        GridLayoutManager layoutManager = new GridLayoutManager(context, column, orientation, false);
+        view.setLayoutManager(layoutManager);
+        view.setItemAnimator(new DefaultItemAnimator());
+        view.setAdapter(adapter);
+    }
 
     /**
      * 配置瀑布流列表RecyclerView
      *
      * @param view
      */
-    public static void initRecyclerViewSV(Context context, RecyclerView view, RecyclerView.Adapter adapter, int column) {
+    public static void initRecyclerViewSV(Context context, RecyclerView view, RecyclerView.Adapter<?> adapter, int column) {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(column, StaggeredGridLayoutManager.VERTICAL);
         view.setLayoutManager(layoutManager);
         view.setItemAnimator(new DefaultItemAnimator());
         view.setAdapter(adapter);
     }
 
-    public static void isFullScreen(RecyclerView recyclerView, final BaseQuickAdapter adapter, final OnFullScreenListener listener) {
+    public static void isFullScreen(RecyclerView recyclerView, final BaseQuickAdapter<?, ?> adapter, final OnFullScreenListener listener) {
         if (recyclerView == null || adapter == null || listener == null) return;
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
         if (manager == null) return;
