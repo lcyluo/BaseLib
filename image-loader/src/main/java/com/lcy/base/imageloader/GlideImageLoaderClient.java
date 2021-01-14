@@ -134,17 +134,30 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
     public void displayImage(Context ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUri() == null ? (img.getUrl() == null ? img.getResId() : img.getUrl()) : img.getUri()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Fragment ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUri() == null ? (img.getUrl() == null ? img.getResId() : img.getUrl()) : img.getUri()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Activity ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(img.getUri() == null ? (img.getUrl() == null ? img.getResId() : img.getUrl()) : img.getUri()).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).into(img.getImgView());
+    }
+
+    private Object loadCustom(ImageLoader img) {
+        if (img.getGlideUrl() != null) {
+            return img.getGlideUrl();
+        }
+        if (img.getUri() != null) {
+            return img.getUri();
+        }
+        if (img.getUrl() != null) {
+            return img.getUrl();
+        }
+        return img.getResId();
     }
 
     private RequestOptions getOptions(ImageLoader imageLoader) {
@@ -170,7 +183,6 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
         if (imageLoader.getImageSize() != null) {
             options = options.override(imageLoader.getImageSize().getWidth(), imageLoader.getImageSize().getHeight());
         }
-
         return options;
     }
 

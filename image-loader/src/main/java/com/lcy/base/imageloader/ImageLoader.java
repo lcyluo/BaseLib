@@ -5,9 +5,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.IdRes;
 
+import com.bumptech.glide.load.model.GlideUrl;
 import com.lcy.base.imageloader.listener.ImageSize;
 
-@SuppressWarnings("all")
 public class ImageLoader {
 
     /**
@@ -33,10 +33,12 @@ public class ImageLoader {
     private boolean skipMemoryCache;    //  防止内存缓存
     private boolean skipDiskCache;      //  防止磁盘缓存(主要针对验证码图片)
     private ImageSize imageSize;        //  配置加载图片的大小
+    private GlideUrl glideUrl;          //  自定义缓存key
 
     private ImageLoader(Builder builder) {
         this.url = builder.url;
         this.uri = builder.uri;
+        this.glideUrl = builder.glideUrl;
         this.resId = builder.resId;
         this.placeHolder = builder.placeHolder;
         this.errorHolder = builder.errorHolder;
@@ -102,6 +104,10 @@ public class ImageLoader {
         return imageSize;
     }
 
+    public GlideUrl getGlideUrl() {
+        return glideUrl;
+    }
+
     public static class Builder {
         private String url;
         private Uri uri;
@@ -116,6 +122,7 @@ public class ImageLoader {
         private boolean skipMemoryCache;
         private boolean skipDiskCache;
         private ImageSize imageSize;
+        private GlideUrl glideUrl;
 
         public Builder() {
             this.url = "";
@@ -131,6 +138,7 @@ public class ImageLoader {
             this.skipMemoryCache = false;
             this.skipDiskCache = false;
             this.imageSize = null;
+            this.glideUrl = null;
         }
 
         public Builder url(String url) {
@@ -195,6 +203,11 @@ public class ImageLoader {
 
         public Builder imageSize(ImageSize imageSize) {
             this.imageSize = imageSize;
+            return this;
+        }
+
+        public Builder glideUrl(GlideUrl glideUrl) {
+            this.glideUrl = glideUrl;
             return this;
         }
 

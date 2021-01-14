@@ -3,6 +3,7 @@ package com.lcy.base.core.ext
 import android.content.Context
 import android.net.Uri
 import android.widget.ImageView
+import com.bumptech.glide.load.model.GlideUrl
 import com.lcy.base.imageloader.ImageLoader
 import com.lcy.base.imageloader.ImageLoaderUtil
 import com.lcy.base.imageloader.R
@@ -13,16 +14,18 @@ import com.lcy.base.imageloader.R
  */
 fun ImageView.loadImage(
     context: Context,
-    path: String? = null,
+    url: String? = null,
     uri: Uri? = null,
+    glideUrl: GlideUrl? = null,
     resId: Int = -1,
     placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
     errorHolder: Int = R.drawable.image_loader_ic_def_place_holder
 ) = ImageLoaderUtil.getInstance().displayImage(
     context,
     createImageLoader(
-        path = path,
+        path = url,
         uri = uri,
+        glideUrl = glideUrl,
         resId = resId,
         imageView = this,
         placeHolder = placeHolder,
@@ -35,16 +38,18 @@ fun ImageView.loadImage(
  */
 fun ImageView.loadCircleImage(
     context: Context,
-    path: String? = null,
+    url: String? = null,
     uri: Uri? = null,
+    glideUrl: GlideUrl? = null,
     resId: Int = -1,
     placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
     errorHolder: Int = R.drawable.image_loader_ic_def_place_holder
 ) = ImageLoaderUtil.getInstance().displayImage(
     context,
     createImageLoader(
-        path = path,
+        path = url,
         uri = uri,
+        glideUrl = glideUrl,
         resId = resId,
         imageView = this,
         circleCrop = true,
@@ -58,8 +63,9 @@ fun ImageView.loadCircleImage(
  */
 fun ImageView.loadRoundImage(
     context: Context,
-    path: String? = null,
+    url: String? = null,
     uri: Uri? = null,
+    glideUrl: GlideUrl? = null,
     resId: Int = -1,
     radius: Int = 0,
     placeHolder: Int = R.drawable.image_loader_ic_def_place_holder,
@@ -67,8 +73,9 @@ fun ImageView.loadRoundImage(
 ) = ImageLoaderUtil.getInstance().displayImage(
     context,
     createImageLoader(
-        path = path,
+        path = url,
         uri = uri,
+        glideUrl = glideUrl,
         resId = resId,
         imageView = this,
         radius = radius,
@@ -94,6 +101,7 @@ fun ImageView.loadClear(context: Context) = ImageLoaderUtil.getInstance().clear(
 fun createImageLoader(
     path: String? = null,
     uri: Uri? = null,
+    glideUrl: GlideUrl? = null,
     resId: Int = -1,
     imageView: ImageView,
     circleCrop: Boolean = false,
@@ -107,6 +115,9 @@ fun createImageLoader(
         .circleCrop(circleCrop)
         .radius(radius)
         .imgView(imageView)
+    if (glideUrl != null) {
+        builder.glideUrl(glideUrl)
+    }
     if (path != null) {
         builder.url(path)
     }
