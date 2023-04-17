@@ -76,7 +76,7 @@ fun Context.isWifiConnected(): Boolean {
     val service = this.getSystemService(TELEPHONY_SERVICE) ?: return false
     val cm = service as ConnectivityManager
     val networkInfo = cm.activeNetworkInfo
-    return networkInfo.type == ConnectivityManager.TYPE_WIFI
+    return networkInfo?.type == ConnectivityManager.TYPE_WIFI
 }
 
 /**

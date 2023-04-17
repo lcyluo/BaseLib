@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -34,30 +33,26 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //  Support库
+    //noinspection GradleDependency
     api 'androidx.appcompat:appcompat:1.2.0'
+    //noinspection GradleDependency
     api 'com.google.android.material:material:1.2.1'
     api 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     //  网络请求库
     api rootProject.ext.networkLibs
     //  RxJava
     api rootProject.ext.rxJavaLibs
-    //  依赖注入
-    api rootProject.ext.diLibs
     //  其他
     api rootProject.ext.otherLibs
     //  multiDex
     api rootProject.ext.multidexLibs
     //  kotlin
     api rootProject.ext.kotlinLibs
-    //  弹框
-    api(rootProject.ext.excludeSupport["materialDialogs"]) {
-        exclude group: 'com.android.support'
-    }
-    //  注解
-    kapt rootProject.ext.annotationProcessorLibs
     //  图片加载
     api 'com.lcy.base:image-loader:1.0.6'
     //  配置retrofit动态url库
     api 'me.jessyan:retrofit-url-manager:1.4.0'
-
+    // hilt
+    api "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
 }

@@ -1,13 +1,10 @@
 package com.lcy.base.core.common
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Build
 import androidx.multidex.MultiDex
 import com.lcy.base.core.BuildConfig
-import com.lcy.base.core.injection.component.AppComponent
 import me.yokeyword.fragmentation.Fragmentation
 import java.lang.ref.WeakReference
 import java.util.*
@@ -22,19 +19,10 @@ abstract class CoreApplication : Application() {
     /** 存储Activity栈 **/
     private val mActivityStack: Stack<WeakReference<Activity>> by lazy { Stack<WeakReference<Activity>>() }
 
-    lateinit var appComponent: AppComponent
-
     override fun onCreate() {
         super.onCreate()
         instance = this
-
         initFragmentation()
-
-        //  去掉Android P 私有API提示框
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            closeAndroidPDialog()
-        }
-
     }
 
     /**
@@ -49,6 +37,7 @@ abstract class CoreApplication : Application() {
     companion object {
 
         private lateinit var instance: CoreApplication
+
         @JvmStatic
         fun instance() = instance
     }
@@ -171,27 +160,6 @@ abstract class CoreApplication : Application() {
             i++
         }
         mActivityStack.clear()
-    }
-
-    @SuppressLint("PrivateApi", "DiscouragedPrivateApi")
-    private fun closeAndroidPDialog() {
-        try {
-            val aClass = Class.forName("android.content.pm.PackageParser\$Package")
-            val declaredConstructor = aClass.getDeclaredConstructor(String::class.java)
-            declaredConstructor.isAccessible = true
-        } catch (e: Exception) {
-        }
-        try {
-            val cls = Class.forName("android.app.ActivityThread")
-            val declaredMethod = cls.getDeclaredMethod("currentActivityThread")
-            declaredMethod.isAccessible = true
-            val activityThread = declaredMethod.invoke(null)
-            val mHiddenApiWarningShown = cls.getDeclaredField("mHiddenApiWarningShown")
-            mHiddenApiWarningShown.isAccessible = true
-            mHiddenApiWarningShown.setBoolean(activityThread, true)
-        } catch (e: Exception) {
-        }
-
     }
 
     override fun attachBaseContext(base: Context?) {

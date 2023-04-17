@@ -1,6 +1,5 @@
 package com.lcy.base.core.injection.module
 
-import androidx.annotation.NonNull
 import com.google.gson.Gson
 import com.lcy.base.core.common.HttpConfig
 import com.lcy.base.core.data.cookie.CookieJarImpl
@@ -8,6 +7,9 @@ import com.lcy.base.core.data.cookie.PersistentCookieStore
 import com.lcy.base.core.utils.LenientGsonConverterFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.components.SingletonComponent
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,10 +17,12 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.net.Proxy
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
 @Module
-class HttpModule(@NonNull private val config: HttpConfig) {
+class HttpModule {
 
     @Singleton
     @Provides
@@ -28,7 +32,7 @@ class HttpModule(@NonNull private val config: HttpConfig) {
 
     @Singleton
     @Provides
-    fun provideClient(builder: OkHttpClient.Builder): OkHttpClient {
+    fun provideClient(builder: OkHttpClient.Builder, config: HttpConfig): OkHttpClient {
         // 添加自定义拦截器
         if (config.interceptors != null) {
             config.interceptors.forEach { builder.addInterceptor(it) }
@@ -70,11 +74,19 @@ class HttpModule(@NonNull private val config: HttpConfig) {
 
     @Singleton
     @Provides
-    fun provideRetrofit(builder: Retrofit.Builder, client: OkHttpClient): Retrofit {
-        return createRetrofit(builder, client)
+    fun provideRetrofit(
+        builder: Retrofit.Builder,
+        client: OkHttpClient,
+        config: HttpConfig,
+    ): Retrofit {
+        return createRetrofit(builder, client, config)
     }
 
-    private fun createRetrofit(builder: Retrofit.Builder, client: OkHttpClient): Retrofit {
+    private fun createRetrofit(
+        builder: Retrofit.Builder,
+        client: OkHttpClient,
+        config: HttpConfig
+    ): Retrofit {
         return builder
             .baseUrl(config.baseUrl)
             .client(client)

@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.AppBarLayout
 import com.lcy.base.core.R
+import com.lcy.base.core.ext.getDrawableId
 import com.lcy.base.core.utils.BarUtils
 
 abstract class SimpleActivity : BaseAppCompatActivity() {
@@ -152,11 +153,9 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
         }
     }
 
-    override fun initInject() {}
-
     override fun initPresenter() {}
 
     open fun getNavigationIcon(): Int {
-        return R.drawable.base_core_ic_back
+        return getDrawableId("base_core_ic_back")
     }
 }

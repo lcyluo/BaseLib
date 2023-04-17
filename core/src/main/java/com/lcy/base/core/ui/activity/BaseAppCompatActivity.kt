@@ -7,7 +7,6 @@ import android.os.SystemClock
 import android.view.MenuItem
 import androidx.annotation.CallSuper
 import androidx.annotation.CheckResult
-import androidx.annotation.NonNull
 import androidx.fragment.app.FragmentActivity
 import com.lcy.base.core.common.CoreApplication
 import com.lcy.base.core.common.StatusBarMode
@@ -80,19 +79,16 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
     }
 
     @CheckResult
-    @NonNull
     override fun lifecycle(): Observable<ActivityEvent> {
         return lifecycleSubject.hide()
     }
 
     @CheckResult
-    @NonNull
     override fun <T> bindUntilEvent(event: ActivityEvent): LifecycleTransformer<T> {
         return RxLifecycle.bindUntilEvent(lifecycleSubject, event)
     }
 
     @CheckResult
-    @NonNull
     override fun <T> bindToLifecycle(): LifecycleTransformer<T> {
         return RxLifecycleAndroid.bindActivity(lifecycleSubject)
     }
@@ -149,8 +145,10 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
         mCompositeDisposable?.dispose()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun startActivityForResult(intent: Intent, requestCode: Int, options: Bundle?) {
         if (startActivitySelfCheck(intent)) {
+            @Suppress("DEPRECATION")
             super.startActivityForResult(intent, requestCode, options)
         }
     }
@@ -165,17 +163,13 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
      * @return 检查通过返回true, 检查不通过返回false
      */
     private fun startActivitySelfCheck(intent: Intent): Boolean {
+        if (intent.component == null || intent.action == null) {
+            return true
+        }
         // 默认检查通过
         var result = true
+        val tag: String? = intent.component?.className ?: intent.action
         // 标记对象
-        val tag: String?
-        tag = when {
-            intent.component != null -> // 显式跳转
-                intent.component!!.className
-            intent.action != null -> // 隐式跳转
-                intent.action
-            else -> return result
-        }
         if (tag == mActivityJumpTag && mActivityJumpTime >= SystemClock.uptimeMillis() - 500) {
             // 检查不通过
             result = false

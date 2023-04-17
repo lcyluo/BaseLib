@@ -1,10 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -41,17 +38,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation project(':core')
-//    implementation 'com.lcy.base:core:1.0.5'
-    implementation 'com.lcy.base:easyPhotos:1.0.2'
+    implementation 'com.github.lcyluo:EasyPhotos:1.2.0'
     // debug引入
     debugApi rootProject.ext.debugLibs
     // release引入
     releaseApi rootProject.ext.releaseLibs
-    //  注解
-    kapt rootProject.ext.annotationProcessorLibs
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
 
 }

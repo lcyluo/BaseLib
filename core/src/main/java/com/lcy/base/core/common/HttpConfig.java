@@ -159,24 +159,24 @@ public class HttpConfig {
         }
 
         public Builder connectTimeout(long connectTimeout) {
-            if (connectTimeout > 60L) {
-                connectTimeout = 60L;
+            if (connectTimeout < 0L) {
+                connectTimeout = Constants.APP_API_TIMEOUT;
             }
             this.connectTimeout = connectTimeout;
             return this;
         }
 
         public Builder readTimeout(long readTimeout) {
-            if (connectTimeout > 60L) {
-                connectTimeout = 60L;
+            if (readTimeout < 0L) {
+                readTimeout = Constants.APP_API_TIMEOUT;
             }
             this.readTimeout = readTimeout;
             return this;
         }
 
         public Builder writeTimeout(long writeTimeout) {
-            if (connectTimeout > 60L) {
-                connectTimeout = 60L;
+            if (writeTimeout < 0L) {
+                writeTimeout = Constants.APP_API_TIMEOUT;
             }
             this.writeTimeout = writeTimeout;
             return this;

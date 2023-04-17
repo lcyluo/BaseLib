@@ -14,9 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.lcy.base.core.R;
-import com.lcy.base.core.common.CoreApplication;
-import com.lcy.base.core.injection.component.AppComponent;
-import com.lcy.base.core.injection.module.FragmentModule;
 import com.lcy.base.core.presenter.IBasePresenter;
 import com.lcy.base.core.presenter.view.IBaseView;
 import com.lcy.base.core.rx.lifecycle.FragmentLifecycleable;
@@ -37,7 +34,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation.SupportFragment;
 
-
+@SuppressWarnings("all")
 public abstract class BaseFragment<P extends IBasePresenter> extends SupportFragment implements IBaseView, FragmentLifecycleable {
 
     private final BehaviorSubject<FragmentEvent> lifecycleSubject = BehaviorSubject.create();
@@ -58,14 +55,6 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
         mContext = context;
         lifecycleSubject.onNext(FragmentEvent.ATTACH);
         super.onAttach(context);
-    }
-
-    protected FragmentModule getFragmentModule() {
-        return new FragmentModule(this);
-    }
-
-    protected AppComponent getAppComponent() {
-        return CoreApplication.Companion.instance().getAppComponent();
     }
 
     @Nullable
@@ -152,7 +141,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
         openActivity(pClass, null);
     }
 
-    protected void openActivity(Class<?> pClass, Bundle pBundle) {
+    protected void openActivity(Class<?> pClass, @Nullable Bundle pBundle) {
         Intent intent = new Intent(getActivity(), pClass);
         if (pBundle != null) {
             intent.putExtras(pBundle);
