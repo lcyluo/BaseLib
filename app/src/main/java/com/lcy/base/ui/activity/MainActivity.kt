@@ -14,9 +14,6 @@ class MainActivity : BaseActivity<MainPresenter>(), MainContract.View {
 
     override fun getLayout(): Int = R.layout.activity_main
 
-    override fun initInject() {
-    }
-
     override fun initEventAndData() {
         mPresenter.getVersionInfo()
     }

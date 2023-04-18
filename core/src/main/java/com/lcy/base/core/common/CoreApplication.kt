@@ -26,12 +26,6 @@ abstract class CoreApplication : Application() {
     }
 
     /**
-     * 自定义模块信息
-     */
-    protected abstract fun initAppInjection()
-
-
-    /**
      * 全局伴生对象
      */
     companion object {

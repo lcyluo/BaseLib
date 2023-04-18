@@ -47,7 +47,6 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
         CoreApplication.instance().addActivity(this)
 
         initToolbar(savedInstanceState)
-        initInject()
         initPresenter()
         initEventAndData()
         initListeners()
@@ -56,8 +55,6 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
     protected abstract fun getLayout(): Int
 
     protected abstract fun initToolbar(savedInstanceState: Bundle?)
-
-    protected abstract fun initInject()
 
     protected abstract fun initPresenter()
 
