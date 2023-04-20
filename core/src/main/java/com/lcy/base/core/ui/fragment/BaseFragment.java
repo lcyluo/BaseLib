@@ -62,7 +62,6 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (mRootView == null) {
             mRootView = inflater.inflate(getLayoutId(), null);
-            initInject();
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
         if (parent != null) {
@@ -134,8 +133,6 @@ public abstract class BaseFragment<P extends IBasePresenter> extends SupportFrag
     protected abstract void initEventAndData();
 
     protected abstract void initListeners();
-
-    protected abstract void initInject();
 
     protected void openActivity(Class<?> pClass) {
         openActivity(pClass, null);

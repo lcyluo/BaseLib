@@ -1,5 +1,7 @@
 package com.lcy.base.core.ui.activity
 
+import android.animation.ObjectAnimator
+import android.animation.StateListAnimator
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -36,8 +38,16 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
         this.setSupportActionBar(this.mToolbar)
         this.mActionBarHelper = this.createActionBarHelper()
         this.mActionBarHelper!!.init()
-        if (Build.VERSION.SDK_INT >= 21) {
-            this.mAppBarLayout!!.elevation = 4f
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val stateListAnimator = StateListAnimator()
+            stateListAnimator.addState(
+                IntArray(0),
+                ObjectAnimator.ofFloat(mAppBarLayout!!, "elevation", 0.1f)
+            )
+            mAppBarLayout!!.stateListAnimator = stateListAnimator
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            this.mAppBarLayout!!.elevation = 0.1f
         }
         setNavigationIcon()
         setStatusBarHeight()
