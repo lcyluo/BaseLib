@@ -7,15 +7,16 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
-import com.lcy.base.imageloader.GlideApp;
 
 public class GlideSimpleLoader implements ImageWatcher.Loader {
+
     @Override
     public void load(Context context, Uri uri, final ImageWatcher.LoadCallback lc) {
-        GlideApp.with(context).load(uri).into(new SimpleTarget<Drawable>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+        Glide.with(context).load(uri).into(new SimpleTarget<Drawable>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
             @Override
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                 lc.onResourceReady(resource);

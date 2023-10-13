@@ -48,6 +48,9 @@ dependencies {
     api rootProject.ext.multidexLibs
     //  kotlin
     api rootProject.ext.kotlinLibs
+    api(rootProject.ext.glideV4["glide"]) {
+        exclude group: 'com.android.support'
+    }
     //  配置retrofit动态url库
     api 'me.jessyan:retrofit-url-manager:1.4.0'
     // hilt
