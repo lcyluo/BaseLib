@@ -1,11 +1,13 @@
 package com.lcy.base.imageloader;
 
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
 import androidx.annotation.IdRes;
 
 import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.request.RequestListener;
 import com.lcy.base.imageloader.listener.ImageSize;
 
 public class ImageLoader {
@@ -34,6 +36,7 @@ public class ImageLoader {
     private boolean skipDiskCache;      //  防止磁盘缓存(主要针对验证码图片)
     private ImageSize imageSize;        //  配置加载图片的大小
     private GlideUrl glideUrl;          //  自定义缓存key
+    private RequestListener<Drawable> listener;//  自定义缓存key
 
     private ImageLoader(Builder builder) {
         this.url = builder.url;
@@ -50,6 +53,7 @@ public class ImageLoader {
         this.skipMemoryCache = builder.skipMemoryCache;
         this.skipDiskCache = builder.skipDiskCache;
         this.imageSize = builder.imageSize;
+        this.listener = builder.listener;
     }
 
     public String getUrl() {
@@ -108,6 +112,10 @@ public class ImageLoader {
         return glideUrl;
     }
 
+    public RequestListener<Drawable> getListener() {
+        return listener;
+    }
+
     public static class Builder {
         private String url;
         private Uri uri;
@@ -123,6 +131,7 @@ public class ImageLoader {
         private boolean skipDiskCache;
         private ImageSize imageSize;
         private GlideUrl glideUrl;
+        private RequestListener<Drawable> listener;
 
         public Builder() {
             this.url = "";
@@ -139,6 +148,7 @@ public class ImageLoader {
             this.skipDiskCache = false;
             this.imageSize = null;
             this.glideUrl = null;
+            this.listener = null;
         }
 
         public Builder url(String url) {
@@ -208,6 +218,11 @@ public class ImageLoader {
 
         public Builder glideUrl(GlideUrl glideUrl) {
             this.glideUrl = glideUrl;
+            return this;
+        }
+
+        public Builder listener(RequestListener<Drawable> listener) {
+            this.listener = listener;
             return this;
         }
 

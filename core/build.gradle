@@ -48,8 +48,6 @@ dependencies {
     api rootProject.ext.multidexLibs
     //  kotlin
     api rootProject.ext.kotlinLibs
-    //  图片加载
-    api 'com.lcy.base:image-loader:1.0.6'
     //  配置retrofit动态url库
     api 'me.jessyan:retrofit-url-manager:1.4.0'
     // hilt

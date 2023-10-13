@@ -20,14 +20,3 @@ dependencies {
     }
     annotationProcessor rootProject.ext.glideV4["glideCompiler"]
 }
-
-//publish {
-//    artifactId = 'image-loader'
-//    uploadName = 'image-loader'
-//    publishVersion = '1.0.6'
-//    desc = 'image loader'
-//    userOrg = rootProject.userOrg
-//    groupId = rootProject.groupId
-//    website = rootProject.website
-//    licences = rootProject.licences
-//}

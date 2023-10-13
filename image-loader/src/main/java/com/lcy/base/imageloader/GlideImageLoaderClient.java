@@ -15,9 +15,12 @@ import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
@@ -134,17 +137,17 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
     public void displayImage(Context ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).listener(img.getListener()).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Fragment ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).listener(img.getListener()).into(img.getImgView());
     }
 
     @Override
     public void displayImage(Activity ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).into(img.getImgView());
+        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).listener(img.getListener()).into(img.getImgView());
     }
 
     private Object loadCustom(ImageLoader img) {
