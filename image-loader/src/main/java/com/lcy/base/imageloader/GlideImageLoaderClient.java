@@ -15,12 +15,9 @@ import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
@@ -137,17 +134,29 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
     public void displayImage(Context ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).listener(img.getListener()).into(img.getImgView());
+        GlideRequest<Drawable> apply = GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img));
+        displayImage(apply, img.isAutoRetry(), img.getImgView());
     }
+
 
     @Override
     public void displayImage(Fragment ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).listener(img.getListener()).into(img.getImgView());
+        GlideRequest<Drawable> apply = GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img));
+        displayImage(apply, img.isAutoRetry(), img.getImgView());
     }
 
     @Override
     public void displayImage(Activity ctx, ImageLoader img) {
-        GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img)).listener(img.getListener()).into(img.getImgView());
+        GlideRequest<Drawable> apply = GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img));
+        displayImage(apply, img.isAutoRetry(), img.getImgView());
+    }
+
+
+    private void displayImage(GlideRequest<Drawable> apply, boolean autoRetry, ImageView imageView) {
+        if (autoRetry) {
+            apply.error(apply.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE));
+        }
+        apply.into(imageView);
     }
 
     private Object loadCustom(ImageLoader img) {
@@ -204,12 +213,14 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     //DiskCacheStrategy.SOURCE：缓存原始数据 DiskCacheStrategy.DATA对应Glide 3中的DiskCacheStrategy.SOURCE
     @Override
     public void displayImage(Context context, Uri uri, ImageView imageView) {
-        GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
+        GlideRequest<Drawable> request = GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
+        displayImage(request, true, imageView);
     }
 
     @Override
     public void displayImage(Context context, String url, ImageView imageView) {
-        GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
+        GlideRequest<Drawable> request = GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
+        displayImage(request, true, imageView);
     }
 
     /**
