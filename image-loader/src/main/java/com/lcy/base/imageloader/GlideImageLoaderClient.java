@@ -134,29 +134,22 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
     public void displayImage(Context ctx, ImageLoader img) {
-        GlideRequest<Drawable> apply = GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img));
-        displayImage(apply, img.isAutoRetry(), img.getImgView());
+        displayImage(GlideApp.with(ctx), img);
     }
 
 
     @Override
     public void displayImage(Fragment ctx, ImageLoader img) {
-        GlideRequest<Drawable> apply = GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img));
-        displayImage(apply, img.isAutoRetry(), img.getImgView());
+        displayImage(GlideApp.with(ctx), img);
     }
 
     @Override
     public void displayImage(Activity ctx, ImageLoader img) {
-        GlideRequest<Drawable> apply = GlideApp.with(ctx).load(loadCustom(img)).apply(getOptions(img));
-        displayImage(apply, img.isAutoRetry(), img.getImgView());
+        displayImage(GlideApp.with(ctx), img);
     }
 
-
-    private void displayImage(GlideRequest<Drawable> apply, boolean autoRetry, ImageView imageView) {
-        if (autoRetry) {
-            apply.error(apply.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE));
-        }
-        apply.into(imageView);
+    private void displayImage(GlideRequests requests, ImageLoader imageLoader) {
+        requests.load(loadCustom(imageLoader)).apply(getOptions(imageLoader)).into(imageLoader.getImgView());
     }
 
     private Object loadCustom(ImageLoader img) {
@@ -213,14 +206,12 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     //DiskCacheStrategy.SOURCE：缓存原始数据 DiskCacheStrategy.DATA对应Glide 3中的DiskCacheStrategy.SOURCE
     @Override
     public void displayImage(Context context, Uri uri, ImageView imageView) {
-        GlideRequest<Drawable> request = GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
-        displayImage(request, true, imageView);
+        GlideApp.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
     }
 
     @Override
     public void displayImage(Context context, String url, ImageView imageView) {
-        GlideRequest<Drawable> request = GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
-        displayImage(request, true, imageView);
+        GlideApp.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView);
     }
 
     /**
@@ -315,29 +306,17 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
 
     @Override
     public void displayImageErrorReload(Fragment fragment, String url, String fallbackUrl, ImageView imageView) {
-        GlideApp.with(fragment)
-                .load(url)
-                .error(GlideApp.with(fragment)
-                        .load(fallbackUrl))
-                .into(imageView);
+        GlideApp.with(fragment).load(url).error(GlideApp.with(fragment).load(fallbackUrl)).into(imageView);
     }
 
     @Override
     public void displayImageErrorReload(Activity activity, String url, String fallbackUrl, ImageView imageView) {
-        GlideApp.with(activity)
-                .load(url)
-                .error(GlideApp.with(activity)
-                        .load(fallbackUrl))
-                .into(imageView);
+        GlideApp.with(activity).load(url).error(GlideApp.with(activity).load(fallbackUrl)).into(imageView);
     }
 
     @Override
     public void displayImageErrorReload(Context context, String url, String fallbackUrl, ImageView imageView) {
-        GlideApp.with(context)
-                .load(url)
-                .error(GlideApp.with(context)
-                        .load(fallbackUrl))
-                .into(imageView);
+        GlideApp.with(context).load(url).error(GlideApp.with(context).load(fallbackUrl)).into(imageView);
     }
 
     @Override

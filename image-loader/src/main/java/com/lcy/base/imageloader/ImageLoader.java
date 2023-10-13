@@ -36,8 +36,6 @@ public class ImageLoader {
     private boolean skipDiskCache;      //  防止磁盘缓存(主要针对验证码图片)
     private ImageSize imageSize;        //  配置加载图片的大小
     private GlideUrl glideUrl;          //  自定义缓存key
-    // 是否自动重试
-    private boolean autoRetry;
 
     private ImageLoader(Builder builder) {
         this.url = builder.url;
@@ -54,7 +52,6 @@ public class ImageLoader {
         this.skipMemoryCache = builder.skipMemoryCache;
         this.skipDiskCache = builder.skipDiskCache;
         this.imageSize = builder.imageSize;
-        this.autoRetry = builder.autoRetry;
     }
 
     public String getUrl() {
@@ -113,10 +110,6 @@ public class ImageLoader {
         return glideUrl;
     }
 
-    public boolean isAutoRetry() {
-        return autoRetry;
-    }
-
     public static class Builder {
         private String url;
         private Uri uri;
@@ -132,7 +125,6 @@ public class ImageLoader {
         private boolean skipDiskCache;
         private ImageSize imageSize;
         private GlideUrl glideUrl;
-        private boolean autoRetry;
 
         public Builder() {
             this.url = "";
@@ -149,7 +141,6 @@ public class ImageLoader {
             this.skipDiskCache = false;
             this.imageSize = null;
             this.glideUrl = null;
-            this.autoRetry = false;
         }
 
         public Builder url(String url) {
@@ -219,11 +210,6 @@ public class ImageLoader {
 
         public Builder glideUrl(GlideUrl glideUrl) {
             this.glideUrl = glideUrl;
-            return this;
-        }
-
-        public Builder autoRetry(boolean autoRetry) {
-            this.autoRetry = autoRetry;
             return this;
         }
 
