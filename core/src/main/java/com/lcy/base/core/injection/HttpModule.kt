@@ -19,6 +19,8 @@ import java.net.Proxy
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
+import javax.net.ssl.HostnameVerifier
+import javax.net.ssl.SSLSession
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -62,6 +64,10 @@ class HttpModule {
                 config.cookieStore = PersistentCookieStore()
             }
             builder.cookieJar(CookieJarImpl(config.cookieStore))
+        }
+        // 设置证书验证规则
+        if (config.hostnameVerifier != null) {
+            builder.hostnameVerifier(config.hostnameVerifier)
         }
         return builder.build()
     }

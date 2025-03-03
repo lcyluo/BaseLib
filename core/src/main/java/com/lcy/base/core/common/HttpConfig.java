@@ -9,6 +9,8 @@ import com.lcy.base.core.data.net.ApiConstant;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.net.ssl.HostnameVerifier;
+
 import okhttp3.Interceptor;
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -26,6 +28,7 @@ public class HttpConfig {
      * 打印Http请求log信息
      */
     private final HttpLoggingInterceptor.Logger logger;
+    private final HostnameVerifier hostnameVerifier;
     /**
      * 定义OkHttp自定义拦截器
      */
@@ -71,6 +74,7 @@ public class HttpConfig {
         this.baseUrl = builder.baseUrl;
         this.cookieJar = builder.cookieJar;
         this.cookieStore = builder.cookieStore;
+        this.hostnameVerifier = builder.hostnameVerifier;
     }
 
     public boolean isShowLog() {
@@ -83,6 +87,10 @@ public class HttpConfig {
 
     public List<Interceptor> getInterceptors() {
         return interceptors;
+    }
+
+    public HostnameVerifier getHostnameVerifier() {
+        return hostnameVerifier;
     }
 
     public long getConnectTimeout() {
@@ -122,6 +130,7 @@ public class HttpConfig {
         private boolean showLog;
         private HttpLoggingInterceptor.Logger logger;
         private List<Interceptor> interceptors;
+        private HostnameVerifier hostnameVerifier;
         private long connectTimeout;
         private long readTimeout;
         private long writeTimeout;
@@ -134,6 +143,7 @@ public class HttpConfig {
             this.showLog = false;
             this.logger = null;
             this.interceptors = null;
+            this.hostnameVerifier = null;
             this.connectTimeout = Constants.APP_API_TIMEOUT;
             this.readTimeout = Constants.APP_API_TIMEOUT;
             this.writeTimeout = Constants.APP_API_TIMEOUT;
@@ -155,6 +165,11 @@ public class HttpConfig {
 
         public Builder addInterceptors(List<Interceptor> interceptors) {
             this.interceptors = interceptors;
+            return this;
+        }
+
+        public Builder hostnameVerifier(HostnameVerifier hostnameVerifier) {
+            this.hostnameVerifier = hostnameVerifier;
             return this;
         }
 
