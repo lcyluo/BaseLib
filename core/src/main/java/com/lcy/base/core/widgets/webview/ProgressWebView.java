@@ -97,8 +97,6 @@ public class ProgressWebView extends WebView {
         setDrawingCacheEnabled(true);
         // 保存表单数据
         settings.setSaveFormData(true);
-        // 启动应用缓存
-        settings.setAppCacheEnabled(true);
         // 设置缓存模式
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         setOverScrollMode(View.OVER_SCROLL_NEVER);

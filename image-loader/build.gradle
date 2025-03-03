@@ -9,7 +9,13 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
     }
-    namespace 'com.lcy.base.image-loader'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    namespace 'com.lcy.base.imageloader'
 }
 
 afterEvaluate {

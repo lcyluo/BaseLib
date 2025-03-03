@@ -30,8 +30,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     namespace 'com.lcy.base'
@@ -39,15 +39,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleDependency
+    //noinspection DifferentStdlibGradleVersion
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation project(':core')
-    implementation 'com.github.lcyluo:EasyPhotos:1.2.0'
+    compileOnly('com.github.lcyluo:EasyPhotos:1.2.2')
     // debug引入
+    //noinspection DependencyNotationArgument
     debugApi rootProject.ext.debugLibs
     // release引入
+    //noinspection DependencyNotationArgument
     releaseApi rootProject.ext.releaseLibs
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "com.google.dagger:hilt-android:2.53.1"
+    kapt "com.google.dagger:hilt-compiler:2.53.1"
 
 }

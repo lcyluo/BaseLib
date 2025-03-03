@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.lcy.base.core.BuildConfig
 import me.yokeyword.fragmentation.Fragmentation
 import java.lang.ref.WeakReference
 import java.util.*
@@ -39,7 +38,6 @@ abstract class CoreApplication : Application() {
     private fun initFragmentation() {
         Fragmentation.builder()
             .stackViewMode(Fragmentation.NONE)
-            .debug(BuildConfig.DEBUG)
             .handleException { e -> e.printStackTrace() }
             .install()
     }

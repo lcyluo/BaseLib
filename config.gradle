@@ -2,9 +2,9 @@ ext {
 
     android = [
             applicationId    : "com.cisdi.building",
-            compileSdkVersion: 31,
+            compileSdkVersion: 34,
             buildToolsVersion: "28.0.3",
-            minSdkVersion    : 19,
+            minSdkVersion    : 23,
             targetSdkVersion : 28,
             versionCode      : 137,
             versionName      : "1.3.7"
