@@ -13,6 +13,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.lcy.base.core.R
 import com.lcy.base.core.ext.getDrawableId
 import com.lcy.base.core.utils.BarUtils
+import androidx.core.view.isVisible
 
 abstract class SimpleActivity : BaseAppCompatActivity() {
 
@@ -62,7 +63,7 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
             return
         }
         val statusBar: View? = findViewById(R.id.view_status_bar)
-        if (statusBar != null && statusBar.visibility == View.VISIBLE) {
+        if (statusBar != null && statusBar.isVisible) {
             val layoutParams = statusBar.layoutParams
             layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
             layoutParams.height = BarUtils.getStatusBarHeight()
@@ -128,7 +129,7 @@ abstract class SimpleActivity : BaseAppCompatActivity() {
             this.mActionBar!!.setDisplayShowHomeEnabled(false)
             mDrawerTitle = title
             this.mTitle = mDrawerTitle
-            toolbarTitle = mToolbar!!.findViewById(R.id.toolbar_title) as TextView
+            toolbarTitle = mToolbar!!.findViewById(R.id.toolbar_title)!!
             if (toolbarTitle != null && supportActionBar != null) {
                 supportActionBar!!.setDisplayShowTitleEnabled(false)
                 toolbarTitle!!.text = mTitle

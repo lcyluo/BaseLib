@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.MenuItem
-import android.view.WindowManager
 import androidx.annotation.CallSuper
 import androidx.annotation.CheckResult
 import androidx.fragment.app.FragmentActivity
@@ -33,14 +32,14 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
     protected var mCompositeDisposable: CompositeDisposable? = null
 
     //  是否显示黑色状态栏
-    open protected var showDarkStatus = true
+    protected open var showDarkStatus = true
 
     private var mLoadingDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleSubject.onNext(ActivityEvent.CREATE)
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        // window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         initWindowFlags()
         reverseStatusColor()
         setContentView(getLayout())
@@ -63,7 +62,7 @@ abstract class BaseAppCompatActivity : SupportActivity(), ActivityLifecycleable 
 
     protected abstract fun initListeners()
 
-    open protected fun initWindowFlags() {
+    protected open fun initWindowFlags() {
 
     }
 

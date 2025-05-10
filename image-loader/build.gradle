@@ -46,7 +46,7 @@ publishing {
         aarAndroid(MavenPublication) {
             groupId = 'com.github.lcyluo'
             artifactId = 'image-loader'
-            version = '1.4.2'
+            version = '1.4.3'
             // 增加上传源码的 task
             artifact sourceJar
             // 必须有这个 否则不会上传AAR包
